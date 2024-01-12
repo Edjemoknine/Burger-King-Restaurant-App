@@ -1,0 +1,40 @@
+.Header {
+  position: relative;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+.span {
+  color: rgb(182, 100, 7);
+}
+
+.active {
+  color: rgb(182, 100, 7);
+  font-weight: 600;
+}
+
+@media (max-width: 776px) {
+  /* .menu {
+    display: flex;
+    border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.4rem;
+  } */
+
+  .Mobile {
+    z-index: 40;
+    background-color: black;
+    width: 300px;
+    padding: 50px 30px;
+    border-radius: 1rem;
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
