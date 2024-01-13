@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Hero/Hero.module.css";
-import { Facebook } from "lucide-react";
+
 import {
   TwitterLogoIcon,
   InstagramLogoIcon,
@@ -19,7 +19,7 @@ const Footer = () => {
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",
         }}
-        className={`${styles.hero}  min-h-[500px] pt-20 mt-40`}
+        className={`  min-h-[500px] pt-20 mt-40`}
       >
         <div className="absolute bg-black/70 inset-0"></div>
 
@@ -43,7 +43,7 @@ const Footer = () => {
               </button>
             </div>
           </div>
-          <div className=" max-w-4xl text-center md:mt-20 relative mt-52 mx-auto grid gap-6 md:grid-cols-3">
+          <div className=" max-w-4xl text-center md:mt-36 relative mt-52 mx-auto grid gap-6 md:grid-cols-3">
             <div className="flex flex-col text-sm items-center gap-4">
               <h2 className="text-xl  font-amita">Contact Us</h2>
               <div className="flex text-gray-300 flex-col gap-2">
@@ -77,7 +77,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="text-center mt-10 relative text-gray-300">
-            All Rights Reserved.&copy; 2024 by Moknine Birger King
+            Copyrights &copy; 2024 by Moknine Birger King. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 const Links = [
   { label: "Home", href: "/" },
-  { label: "Menu", href: "/menu" },
+  { label: "Menu", href: "/store" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -19,11 +20,10 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <header className={styles.Header}>
+    <header className={`${styles.Header} relative`}>
       <div className={"max-w-6xl mx-auto p-4 px-8 "}>
         <div
           style={{
-            position: "relative",
             width: "100%",
             display: "flex",
             alignItems: "center",
@@ -64,19 +64,29 @@ const Navbar = () => {
             onClick={() => setOpen((prev) => !prev)}
             className={` md:hidden flex border-2 border-amber-700 rounded-md p-1`}
           >
-            <Menu className="hover:text-amber-700 duration-300 cursor-pointer" />
+            {!open ? (
+              <Image
+                src="/knife.svg"
+                width={10}
+                height={10}
+                alt="menu"
+                className="w-6 text-amber-700 cursor-pointer"
+              />
+            ) : (
+              <Menu className="hover:text-amber-700 duration-300 cursor-pointer" />
+            )}
           </div>
 
           <div
             className={`${
-              open ? "-right-full" : "right-3"
-            } md:hidden flex flex-col duration-300 gap-6 items-center w-[300px] rounded-md p-6 bg-black absolute  top-12 z-50`}
+              open ? "-right-[200%]" : "right-0"
+            } md:hidden flex flex-col duration-300 font-semibold gap-10 items-center w-full h-screen justify-center text-3xl rounded-md p-6 bg-black absolute  top-[77px]  z-50`}
           >
             {Links.map((link) => (
               <Link
                 className={`${
                   pathname === link.href && styles.active
-                } hover:text-amber-700 duration-300`}
+                } text-amber-700 hover:text-white duration-300`}
                 href={link.href}
                 key={link.label}
               >

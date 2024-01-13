@@ -1,9 +1,11 @@
+import { getProducts } from "@/actions/action";
 import FoodCard from "@/components/FoodCard";
-import { data } from "@/public";
+// import { data } from "@/public";
 import Image from "next/image";
 import React, { useMemo } from "react";
 
-const page = () => {
+const page = async () => {
+  const data = await getProducts();
   return (
     <section>
       <div
@@ -19,7 +21,7 @@ const page = () => {
       >
         <div className="relative z-10 flex flex-col gap-6 text-center">
           <p>DELICIOUS FOOD FOR THE BEST CUSTOMER</p>
-          <h1 className="font-amita text-5xl font-medium">
+          <h1 className="font-amita text-4xl md:text-7xl font-medium">
             Welcome To Our Resturant{" "}
           </h1>
           <span>
@@ -30,11 +32,11 @@ const page = () => {
         <div className="absolute bg-black/70 inset-0"></div>
       </div>
       <div className="max-w-6xl mx-auto p-4 px-8">
-        <div className="flex justify-between gap-10 ">
+        <div className="flex flex-col-reverse md:flex-row justify-between gap-10 ">
           <div className="flex-[2]">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col-reverse md:flex-row gap-6 justify-between items-center">
               <span className="text-gray-400 uppercase">
-                showing 1-12 of results
+                showing 1-12 of results :
               </span>
               <select
                 className="px-4 py-2 outline-none cursor-pointer"
@@ -102,33 +104,37 @@ const page = () => {
                 FILTER
               </button>
             </div>
-            <div className="bg-[#1a1c1f] flex flex-col gap-6 mt-6 p-6">
+            <div className="bg-[#1a1c1f] md:flex hidden flex-col gap-6 mt-6 p-6">
               <h4 className="uppercase text-xl mb-3">featured menu items</h4>
-              <div className="flex flex-col gap-6">
-                <div className="flex items-center gap-10 ">
+              <div className="flex  flex-col gap-6">
+                <div className="flex  items-center gap-10 ">
                   <Image
                     className="w-24 h-24 object-contain"
-                    src={data[0].img}
+                    src={data[0].images[0]}
                     alt="imag"
                     width={80}
                     height={80}
                   />
                   <div>
-                    <h4 className=" font-medium">MARGARITA</h4>
-                    <p className="font-dancing text-gray-400">$2.60</p>
+                    <h4 className=" font-medium">{data[0].title}</h4>
+                    <p className="font-dancing text-gray-400">
+                      ${data[1].price[0]}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-10 ">
                   <Image
                     className="w-24 h-24 object-contain"
-                    src={data[4].img}
+                    src={data[1].images[0]}
                     alt="imag"
                     width={80}
                     height={80}
                   />
                   <div>
-                    <h4 className=" font-medium">MARGARITA</h4>
-                    <p className="font-dancing text-gray-400">$2.60</p>
+                    <h4 className=" font-medium">{data[1].title}</h4>
+                    <p className="font-dancing text-gray-400">
+                      ${data[1].price[0]}
+                    </p>
                   </div>
                 </div>
               </div>

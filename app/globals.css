@@ -8,7 +8,9 @@
 input,
 select,
 select option,
+textarea,
 optgroup {
+  outline: none;
   background-color: transparent;
   border: 1px solid gray;
   background: transparent;

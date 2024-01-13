@@ -1,12 +1,9 @@
-import { data } from "@/public";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useMemo } from "react";
 
-const Menu = () => {
-  const randomdata = useMemo(() => {
-    return data.sort((a, b) => a.id * Math.random() - b.id);
-  }, []);
+import { getProducts } from "../actions/action";
+const Menu = async () => {
+  const data = await getProducts();
 
   return (
     <div className="max-w-6xl mx-auto p-4 px-8">
@@ -20,13 +17,13 @@ const Menu = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-10">
-        {randomdata.slice(0, 10).map((meal) => (
+        {data.slice(0, 10).map((meal) => (
           <Link href={`/${meal.id}`} key={meal.id}>
             <div className="flex items-center gap-8">
               <div className="relative h-36 w-36">
                 <Image
                   className="object-contain"
-                  src={meal.img}
+                  src={meal.images[0]}
                   alt="meal"
                   fill
                 />
@@ -34,10 +31,10 @@ const Menu = () => {
               <div className="flex flex-col gap-2">
                 <h4 className="text-white font-medium">{meal.title}</h4>
                 <p className="text-xs max-w-[200px] text-gray-400">
-                  {meal.desc}
+                  {meal.description}
                 </p>
                 <span className="font-dancing text-amber-700 font-semibold">
-                  {meal.price}
+                  {meal.price[0]}
                 </span>
               </div>
             </div>
