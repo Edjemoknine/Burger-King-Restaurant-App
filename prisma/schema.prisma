@@ -15,6 +15,14 @@ model Product {
   title        String
   description  String
   price        Int[]
-  extraOptions Json
+  extraOptions Json[]
   images       String[]
+}
+
+model Order {
+  id       String @id @default(uuid()) @map("_id")
+  customer String
+  address  String
+  amount   Int
+  status   Int
 }

@@ -114,7 +114,7 @@ const page = () => {
           <h1 className="text-3xl font-medium text-center my-16">
             OUR BRANCHES
           </h1>
-          <div className="grid md:grid-cols-2 gap-10 minh-h-[700px]">
+          <div className="grid md:grid-cols-2 gap-10 min-h-[700px]">
             <div className="flex flex-col items-center text-center">
               <div className="w-full h-1/2 relative">
                 <Image
@@ -126,7 +126,7 @@ const page = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex justify-center p-10 h-1/2 items-center flex-col gap-6">
+              <div className="flex justify-center p-6 h-1/2 items-center flex-col gap-6">
                 {/* <Image src={"/vagan.svg"} alt="" width={100} height={100} /> */}
                 <h2 className="font-semibold text-xl">ALGER</h2>
                 <p className="text-gray-300">
@@ -149,7 +149,7 @@ const page = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex justify-center p-10 h-1/2 items-center flex-col gap-6">
+              <div className="flex justify-center p-6 h-1/2 items-center flex-col gap-6">
                 {/* <Image src={"/vagan.svg"} alt="" width={100} height={100} /> */}
                 <h2 className="font-semibold text-xl">CHLEF</h2>
                 <p className="text-gray-300">

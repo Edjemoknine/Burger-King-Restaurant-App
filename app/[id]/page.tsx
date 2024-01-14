@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import FoodCard from "@/components/FoodCard";
@@ -5,8 +6,10 @@ import Image from "next/image";
 import { useState } from "react";
 import useSWR from "swr";
 import { Product } from "@prisma/client";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/providers/redux/cartSlice";
 
-const fetcher = (...args) =>
+const fetcher = (...args: any[]) =>
   fetch(...args, { cache: "no-store" }).then((res) => res.json());
 
 const page = ({ params: { id } }) => {
@@ -14,16 +17,29 @@ const page = ({ params: { id } }) => {
     `http://localhost:3000/api/products/${id}`,
     fetcher
   );
-
+  const dispatch = useDispatch();
   const [currentTab, setcurrentTab] = useState<string>("description");
   const [currentIMG, setCurrentIMg] = useState<number>(0);
-  const [price, setPrice] = useState<number>(data.price[0]);
-  const [quantity, setQuantity] = useState<number>(1);
 
-  const handleselect = (e) => {};
+  const [size, setSize] = useState(0);
+  const [price, setPrice] = useState(data?.price[size]);
+
+  const [quantity, setQuantity] = useState<number>(1);
+  const [ChosenExtras, setChosenExtras] = useState([]);
+
+  const handleChoose = (e, option) => {
+    const checked = e.target.checked;
+
+    if (checked) {
+      setChosenExtras([...ChosenExtras, option]);
+    } else {
+      setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+    }
+  };
+
+  const slug = ChosenExtras.map((op) => op.text).join();
 
   if (isLoading) return "..loading...";
-
   return (
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
       <div className="grid md:grid-cols-2 gap-10">
@@ -52,7 +68,7 @@ const page = ({ params: { id } }) => {
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="text-2xl uppercase">{data.title}</h2>
-          <h3 className="font-dancing">{data.price[0]}</h3>
+          <h3 className="font-dancing">${data?.price[size]}</h3>
           <p className="text-xs text-gray-300 leading-5 min-h-40">
             {data.description}
           </p>
@@ -61,51 +77,59 @@ const page = ({ params: { id } }) => {
             <div className="grid grid-cols-2 gap-6 ">
               <span>Size</span>
               <select
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setSize(e.target.value)}
                 className="px-4 py-2"
               >
-                <option className="bg-black text-white" value={data?.price[0]}>
+                <option className="bg-black text-white" value={0}>
                   small 12"(6 Slices)"
                 </option>
-                <option className="bg-black text-white" value={data?.price[1]}>
+                <option className="bg-black text-white" value={1}>
                   medium 16"(8 Slices)"
                 </option>
-                <option className="bg-black text-white" value={data?.price[2]}>
+                <option className="bg-black text-white" value={2}>
                   Extra 24"(12 Slices)"
                 </option>
               </select>
             </div>
-            {data.extraOptions.map((option: any) => (
-              <div key={option.id} className="grid grid-cols-3 gap-6 my-4 ">
-                <div className="flex gap-3 items-center">
+            <div className="grid grid-cols-3 gap-3 my-4 ">
+              {data.extraOptions.map((option: any, index: number) => (
+                <div key={option.text} className="flex gap-3 items-center">
                   <label className="cursor-pointer" htmlFor={option.text}>
                     {option.text}
                   </label>
                   <input
+                    onClick={(e) => handleChoose(e, option)}
                     className="w-4 h-4 bg-black"
                     type="checkbox"
                     name={option.text}
                     id={option.text}
+                    value={index}
                   />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <div className="flex justify-end">
               <button className="text-black hover:text-amber-600 px-4 py-2 bg-amber-600 hover:bg-transparent border border-amber-600">
                 Clear
               </button>
             </div>
-            <h3 className="font-medium font-dancing text-xl mt-6">$ 5.00</h3>
+            {/* <h3 className="font-medium font-dancing text-xl mt-6">$ 5.00</h3> */}
             <div className="flex items-center gap-3">
               <input
                 onChange={(e) => setQuantity(e.target.value)}
                 type="number"
-                value={price}
-                defaultValue={1}
+                value={quantity}
                 className="w-16 text-center p-2  "
               />
-              <button className="text-black px-4 py-2 hover:text-amber-600 bg-amber-600 hover:bg-transparent border border-amber-600">
+              <button
+                onClick={() =>
+                  dispatch(
+                    addProduct({ ...data, quantity, size, ChosenExtras, slug })
+                  )
+                }
+                className="text-black px-4 py-2 hover:text-amber-600 bg-amber-600 hover:bg-transparent border border-amber-600"
+              >
                 ADD TO CART
               </button>
             </div>

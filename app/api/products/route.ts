@@ -1,6 +1,7 @@
 import { PrismaClient,Product } from "@prisma/client";
 import { NextResponse } from "next/server"
 const prisma = new PrismaClient();
+
 export const POST= async(request)=>{
     const body:Product= await request.json()
 

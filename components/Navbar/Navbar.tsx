@@ -55,7 +55,7 @@ const Navbar = () => {
             </Link>
             <Link
               className={`${pathname === "/book" && styles.active}`}
-              href={"/book"}
+              href={"/cart"}
             >
               Book Table
             </Link>
