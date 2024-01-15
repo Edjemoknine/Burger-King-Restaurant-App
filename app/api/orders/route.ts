@@ -1,18 +1,27 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+
 const prisma = new PrismaClient();
 
-export const POST= async(request)=>{
+export const POST = async(request:NextRequest)=>{
     const body= await request.json()
-console.log(body)
+    const generateOrders=body.orders.map(order=>{return `${order.quantity} | ${order.name} | ${order.slug}`})
+
     try {
 
-       const product= await prisma.product.create({
-            data:{...body}
+       const order= await prisma.order.create({
+            data:{
+                customer:body.customer,
+                address:body.address,
+                amount:body.amount,
+                status:body.status,
+                orders:generateOrders
+            
+            }
         })
 
-        console.log(product)
-        return new NextResponse(JSON.stringify(product),{status:500})
+        console.log(order)
+        return new NextResponse(JSON.stringify(order),{status:201})
     } catch (error:any) {
         return new NextResponse(error,{status:500})
     }

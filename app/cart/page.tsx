@@ -11,6 +11,26 @@ interface OrderType {
 const page = () => {
   const { products, total } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
+
+  console.log(products);
+  const orders = products.map((product: any) => {
+    return {
+      id: product.id,
+      name: product.title,
+      slug: product.slug,
+      description: product.description,
+      quantity: product.quantity,
+      price:
+        product.price[product.size] +
+        product.ChosenExtras?.reduce(
+          (sum: any, pro: any) => sum + pro.price,
+          0
+        ),
+    };
+  });
+
+  // console.log(orders);
+
   return (
     <div>
       <div className="max-w-6xl mx-auto  p-8">
@@ -30,7 +50,7 @@ const page = () => {
               </thead>
               <tbody>
                 {products.map((product: OrderType) => (
-                  <tr key={product.id}>
+                  <tr key={product.slug}>
                     <td className=" flex mb-2 justify-center items-center">
                       <Image
                         src={product.images[0]}
@@ -89,7 +109,7 @@ const page = () => {
                 <span>${total}</span>
               </p>
             </div>
-            <CheckoutButton />
+            <CheckoutButton orders={orders} />
           </div>
         </div>
       </div>

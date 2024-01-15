@@ -8,12 +8,34 @@ export const getProducts=async()=>{
     return products
 
 }
-export const getProductDT=async({id})=>{
+export const getOrders=async()=>{
+    const orders = await prisma.order.findMany()
+    
+    return orders
+
+}
+
+
+
+
+
+export const getProductDT=async(id:string)=>{
     console.log(id)
     const products = await prisma.product.findUnique({
         where:{id:id}
     })
     
     return products
+
+}
+
+
+export const getOrder = async(id:string)=>{
+    // console.log(id)
+    const orders = await prisma.order.findUnique({
+        where:{id:id}
+    })
+    
+    return orders
 
 }
