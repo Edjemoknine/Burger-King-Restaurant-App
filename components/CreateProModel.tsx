@@ -8,6 +8,7 @@ import { CreatePro } from "@/actions/action";
 import axios from "axios";
 import { uploadCloud } from "@/lib/Cloudinary";
 import { Console } from "console";
+import { useFormStatus } from "react-dom";
 
 // interface props {
 //   setOpen: (boolean) => void;
@@ -21,6 +22,10 @@ const ACCEPTED_IMAGE_TYPES = [
 ];
 
 const CreateProModel = ({ setOpen }) => {
+  const { pending } = useFormStatus();
+
+  console.log(pending);
+
   const productSchema = z.object({
     title: z.string().min(3, { message: "please add title to product" }),
     description: z
@@ -45,6 +50,7 @@ const CreateProModel = ({ setOpen }) => {
 
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<Schema>({
@@ -56,6 +62,8 @@ const CreateProModel = ({ setOpen }) => {
   const [extraOptions, setExtraOptions] = useState<any>([]);
   const addOption = () => {
     setExtraOptions([...extraOptions, { text: optText, price: optPrice }]);
+    setOptText("");
+    setOptPrice(0);
   };
   //   const [ImgUrls, setImgUrls] = useState([]);
   const onSubmit = async (data: Schema) => {
@@ -69,9 +77,9 @@ const CreateProModel = ({ setOpen }) => {
         arr.push(data);
       }
 
-      console.log(arr);
+      // console.log(arr);
       const images = arr?.map((image) => image.url);
-      console.log(images);
+      // console.log(images);
 
       const dataPtro = {
         title: data.title,
@@ -86,6 +94,7 @@ const CreateProModel = ({ setOpen }) => {
     }
 
     setOpen(false);
+    reset();
   };
 
   return (
@@ -237,8 +246,9 @@ const CreateProModel = ({ setOpen }) => {
           </div>
           <input
             type="submit"
+            disabled={pending}
             value={"Create"}
-            className="px-4 py-2 rounded-md bg-green-500 font-semibold hover:bg-green-600 mt-3 duration-300"
+            className="px-4 py-2 cursor-pointer rounded-md bg-green-500 font-semibold hover:bg-green-600 mt-3 duration-300 disabled:bg-slate-400 disabled:cursor-not-allowed"
           />
           {/* Create
           </> */}

@@ -23,7 +23,7 @@ const page = () => {
       price:
         product.price[product.size] +
         product.ChosenExtras?.reduce(
-          (sum: any, pro: any) => sum + pro.price,
+          (sum: any, pro: any) => sum + Number(pro.price),
           0
         ),
     };
@@ -75,7 +75,7 @@ const page = () => {
                       $
                       {(product.price[product.size] +
                         product.ChosenExtras?.reduce(
-                          (sum, pro) => sum + pro.price,
+                          (sum, pro) => sum + Number(pro.price),
                           0
                         )) *
                         product.quantity}

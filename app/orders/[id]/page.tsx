@@ -23,14 +23,12 @@ const ClientOrder = async ({ params: { id } }) => {
               </thead>
               <tbody>
                 <tr>
-                  <td className=" flex mb-2 justify-center items-center">
-                    <p>{order?.id.slice(0, 5)}..</p>
-                  </td>
+                  <td className=" ">{order?.id.slice(0, 5)}..</td>
                   <td className="">{order?.customer}</td>
                   <td className="font-bold text-amber-700">{order?.address}</td>
 
                   <td>
-                    <div className="flex flex-wrap gap-1 justify-center">
+                    <div className="flex flex-wrap flex-col gap-1 justify-center">
                       {order?.orders.map((or) => (
                         <span key={or}>{or}</span>
                       ))}
@@ -71,6 +69,9 @@ const ClientOrder = async ({ params: { id } }) => {
                         alt="product"
                         width={40}
                         height={40}
+                        className={`${
+                          order.status + 1 === 2 && "animate-pulse"
+                        }`}
                       />
                       <span>Preparing</span>
                       {order?.status === 2 && (
@@ -92,6 +93,9 @@ const ClientOrder = async ({ params: { id } }) => {
                         alt="product"
                         width={40}
                         height={40}
+                        className={`${
+                          order.status + 1 === 3 && "animate-pulse"
+                        }`}
                       />
                       <span>On the way</span>
                       {order?.status === 3 && (
@@ -113,6 +117,9 @@ const ClientOrder = async ({ params: { id } }) => {
                         alt="product"
                         width={40}
                         height={40}
+                        className={`${
+                          order.status + 1 === 4 && "animate-pulse"
+                        }`}
                       />
                       <span>Delivered</span>
                       {order?.status === 4 && (
@@ -134,6 +141,9 @@ const ClientOrder = async ({ params: { id } }) => {
                         alt="product"
                         width={40}
                         height={40}
+                        className={`${
+                          order.status + 1 === 5 && "animate-pulse"
+                        }`}
                       />
                       <span>Enjoy</span>
                       {order?.status === 5 && (

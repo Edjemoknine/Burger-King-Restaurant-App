@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { UserButton, SignedIn, useUser } from "@clerk/nextjs";
 const Links = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/store" },
@@ -14,6 +16,8 @@ const Links = [
 const Navbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
+  const { isAdmin } = useSelector((store) => store.cart);
+  const { user } = useUser();
 
   useEffect(() => {
     setOpen(true);
@@ -47,18 +51,30 @@ const Navbar = () => {
             ))}
           </nav>
           <div className={` items-center gap-6 hidden md:flex`}>
-            <Link
-              className={`${pathname === "/login" && styles.active}`}
-              href={"/login"}
-            >
-              Login/Register
-            </Link>
+            {user && isAdmin && (
+              <Link
+                className={`${pathname === "/login" && styles.active}`}
+                href={"/admin"}
+              >
+                Dashboard
+              </Link>
+            )}
+
             <Link
               className={`${pathname === "/book" && styles.active}`}
               href={"/cart"}
             >
-              Book Table
+              Cart
             </Link>
+            {!user && (
+              <Link
+                className={`${pathname === "/login" && styles.active}`}
+                href={"/login"}
+              >
+                Login/Register
+              </Link>
+            )}
+            <UserButton afterSignOutUrl="/" />
           </div>
           <div
             onClick={() => setOpen((prev) => !prev)}
@@ -103,7 +119,7 @@ const Navbar = () => {
               className={`${pathname === "/book" && styles.active}`}
               href={"/book"}
             >
-              Book Table
+              Cart
             </Link>
           </div>
         </div>

@@ -3,7 +3,8 @@ import {Product} from "@prisma/client"
 const initialState={
     products:[],
     total: 0,
-    Quantity:0
+    Quantity:0,
+    isAdmin:false
 }
  const cartSlice= createSlice({
     name:"cart",
@@ -17,7 +18,7 @@ const initialState={
 
             state.total=state.products.reduce((sum,product)=>
 
-                sum+ (product.quantity  * (product.price[product.size] + product.ChosenExtras?.reduce((sum, opt) => sum + opt.price,0))) ,0)
+                sum+ (product.quantity  * (product.price[product.size] + product.ChosenExtras?.reduce((sum, opt) => sum + Number(opt.price),0))) ,0)
 
          
 
@@ -28,10 +29,13 @@ const initialState={
         removeProduct:(state,{payload})=>{
             console.log(payload)
             state.products =  state.products.filter(product=>product.slug !== payload)
+        },
+        checkAdmin:(state,{payload})=>{
+            state.isAdmin=payload
         }
     }
 
 })
 
-export const {addProduct,resetCart,removeProduct}= cartSlice.actions
+export const {addProduct,resetCart,removeProduct,checkAdmin}= cartSlice.actions
 export  default cartSlice.reducer

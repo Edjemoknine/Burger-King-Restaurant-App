@@ -4,7 +4,7 @@ import CreateProduct from "@/components/CreateProduct";
 import DeletePro from "@/components/DeletePro";
 import NextStep from "@/components/NextStep";
 import UpdatePro from "@/components/UpdatePro";
-import { UserButton } from "@clerk/nextjs";
+import { currentUser, auth } from "@clerk/nextjs";
 import Image from "next/image";
 import React from "react";
 
@@ -24,9 +24,7 @@ const Admin = async () => {
   };
   return (
     <div className="relative">
-      <div className="absolute -top-12 right-16 z-50">
-        <UserButton afterSignOutUrl="/" />
-      </div>
+      <div className="absolute -top-12 right-16 z-50"></div>
       <div
         style={{
           backgroundImage:
