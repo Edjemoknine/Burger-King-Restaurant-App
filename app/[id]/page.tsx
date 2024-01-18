@@ -8,6 +8,7 @@ import useSWR from "swr";
 import { Product } from "@prisma/client";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
+import SkeletonDT from "@/components/skeleton/skeleton";
 
 const fetcher = (...args: any[]) =>
   fetch(...args, { cache: "no-store" }).then((res) => res.json());
@@ -17,6 +18,17 @@ const page = ({ params: { id } }) => {
     `http://localhost:3000/api/products/${id}`,
     fetcher
   );
+  const { data: related } = useSWR<Product>(
+    `http://localhost:3000/api/products`,
+    fetcher
+  );
+
+  const RelatedPro = related?.filter(
+    (pro) =>
+      pro.title.toLowerCase().includes(data?.title.toLocaleLowerCase()) &&
+      pro.id !== data?.id
+  );
+
   const dispatch = useDispatch();
   const [currentTab, setcurrentTab] = useState<string>("description");
   const [currentIMG, setCurrentIMg] = useState<number>(0);
@@ -39,10 +51,10 @@ const page = ({ params: { id } }) => {
 
   const slug = ChosenExtras.map((op) => op.text).join();
 
-  if (isLoading) return "..loading...";
+  if (isLoading) return <SkeletonDT />;
   return (
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-2 gap-16">
         <div>
           <div className="relative h-96">
             <Image
@@ -54,21 +66,21 @@ const page = ({ params: { id } }) => {
           </div>
           <div className="flex mt-10 justify-center gap-3">
             {data.images.map((image: string, index: number) => (
-              <Image
-                key={index}
-                className="h-48 cursor-pointer w-40 object-cover"
-                width={80}
-                height={80}
-                src={image}
-                alt="burger"
-                onClick={() => setCurrentIMg(index)}
-              />
+              <div key={index} className=" h-32 w-32 relative">
+                <Image
+                  className=" cursor-pointer object-cover"
+                  fill
+                  src={image}
+                  alt="burger"
+                  onClick={() => setCurrentIMg(index)}
+                />
+              </div>
             ))}
           </div>
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="text-2xl uppercase">{data.title}</h2>
-          <h3 className="font-dancing">${data?.price[size]}</h3>
+          <h3 className="font-medium  text-xl">${data?.price[size]}</h3>
           <p className="text-xs text-gray-300 leading-5 min-h-40">
             {data.description}
           </p>
@@ -196,9 +208,9 @@ const page = ({ params: { id } }) => {
           related products
         </h1>
         <div className="grid mb-16 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {/* <FoodCard />
-          <FoodCard />
-          <FoodCard /> */}
+          {RelatedPro?.slice(0, 2).map((pro) => (
+            <FoodCard meal={pro} key={pro.id} />
+          ))}
         </div>
       </div>
     </div>

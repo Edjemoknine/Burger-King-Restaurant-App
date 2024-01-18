@@ -8,15 +8,18 @@ const FoodCard = ({ meal }) => {
   const dispatch = useDispatch();
   return (
     <div className="bg-[#1a1c1f] p-6 mt-20 relative">
-      <Link href={`/${meal.id}`}>
-        <Image
-          className="w-44 h-44 object-contain mx-auto absolute left-0 right-0 -top-24"
-          src={meal.images[0]}
-          alt=""
-          width={80}
-          height={80}
-        />
-      </Link>
+      <div className=" absolute left-0 right-0  -top-24">
+        <Link href={`/${meal.id}`}>
+          <div className="w-44 h-44 relative mx-auto">
+            <Image
+              className=" object-cover"
+              src={meal.images[0]}
+              alt="food img"
+              fill
+            />
+          </div>
+        </Link>
+      </div>
       <div className="flex flex-col mt-16 gap-6 items-center text-center">
         <Link href={`/${meal.id}`}>
           <h4

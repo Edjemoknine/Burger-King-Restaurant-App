@@ -1,12 +1,36 @@
 "use server";
 import { PrismaClient, Product, } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import { title } from "process";
 const prisma=new PrismaClient()
 
-export const getProducts=async()=>{
-    const products = await prisma.product.findMany()
-    
-    return products
+export const getProducts=async(page,name)=>{
+    const pageNum = page ?? 0; 
+    const term = name ?? ""; 
+
+    const [products,count] = await prisma.$transaction([
+        prisma.product.findMany( {
+                take: 6,
+                skip: pageNum * 6,
+                where:{
+                  OR:[  {title:{
+                        contains:term,
+                        mode:"insensitive"
+                    }},
+                   { description:{
+                        contains:term,
+                        mode:"insensitive"
+                    }}]
+                    ,
+                    // price:{has:Number(price)}
+                }
+        }),
+        prisma.product.count()
+
+    ])
+
+    revalidatePath('/store')
+    return {products,count}
 
 }
 

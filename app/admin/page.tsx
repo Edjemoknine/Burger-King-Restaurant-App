@@ -9,7 +9,8 @@ import Image from "next/image";
 import React from "react";
 
 const Admin = async () => {
-  const products = await getProducts();
+  const { products } = await getProducts();
+  console.log(products);
   const orders = await getOrders();
 
   const Status = ["payment", "preparing", "on the way", "delivered", "enjoy"];

@@ -18,10 +18,12 @@ const ByPrice = ({ setPrice, price }) => {
           <span>$20</span>
         </p>
       </div>
-      <button className="px-4 py-2 border border-gray-400 hover:bg-amber-700 duration-300 text-white ">
-        FILTER
+      <button
+        onClick={() => setPrice(20)}
+        className="px-4 py-2 border border-gray-400 hover:bg-amber-700 duration-300 text-white "
+      >
+        Clear
       </button>
-      B
     </div>
   );
 };

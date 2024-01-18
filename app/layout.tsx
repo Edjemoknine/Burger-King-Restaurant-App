@@ -6,12 +6,12 @@ import Footer from "@/components/Footer";
 import ReduxProvider from "@/providers/ReduxProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
-
+import "react-loading-skeleton/dist/skeleton.css";
 export const metadata: Metadata = {
   title: "Burger King",
   description: "Taste the best food in the world",
 };
-
+import { SkeletonTheme } from "react-loading-skeleton";
 export default function RootLayout({
   children,
 }: {
@@ -24,7 +24,9 @@ export default function RootLayout({
           {/* <div className={styles.layout}> */}
           <ReduxProvider>
             <Navbar />
-            {children}
+            <SkeletonTheme baseColor="#202020" highlightColor="#444">
+              {children}
+            </SkeletonTheme>
           </ReduxProvider>
           <Footer />
           {/* </div> */}

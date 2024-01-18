@@ -16,7 +16,7 @@ const Links = [
 const Navbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
-  const { isAdmin } = useSelector((store) => store.cart);
+  const { isAdmin, Quantity } = useSelector((store) => store.cart);
   const { user } = useUser();
 
   useEffect(() => {
@@ -61,10 +61,13 @@ const Navbar = () => {
             )}
 
             <Link
-              className={`${pathname === "/book" && styles.active}`}
+              className={`${pathname === "/book" && styles.active} relative`}
               href={"/cart"}
             >
-              Cart
+              <p className="text-[10px] text-white flex justify-center items-center absolute right-0 -top-2 bg-amber-700 rounded-full w-4 h-4">
+                {Quantity}
+              </p>
+              <Image src={"/cart1.svg"} width={30} height={30} alt="cart" />
             </Link>
             {!user && (
               <Link

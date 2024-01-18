@@ -3,46 +3,52 @@ import { getProducts } from "@/actions/action";
 import ByName from "@/components/ByName";
 import ByPrice from "@/components/ByPrice";
 import FoodCard from "@/components/FoodCard";
-// import { data } from "@/public";
+import Pagination from "@/components/Pagination";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Page = () => {
   const [products, setProducts] = useState([]);
-  const [results, setResults] = useState([...products]);
+  // const [results, setResults] = useState([...products]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(20);
 
-  const productsdata = async () => {
-    const data = await getProducts();
-    setProducts(data);
+  const [pageN, setPageN] = useState(0);
+  const [Count, setCounts] = useState();
+  let page = pageN;
+
+  const productsdata = async (page, price, name) => {
+    const { count, products } = await getProducts(page, name);
+    setProducts(products);
+    console.log(products);
+    setCounts(count);
   };
 
-  useEffect(() => {
-    setResults(() => fitry());
-  }, [name, products]);
+  // useEffect(() => {
+  //   setResults(() => fitry());
+  // }, [name, products]);
+
+  // useEffect(() => {
+  //   setResults(() => fitrPr());
+  // }, [price]);
+
+  // function fitry() {
+  //   const data = products.filter(
+  //     (item) =>
+  //       item.title.toLowerCase().includes(name) ||
+  //       item.description.toLowerCase().includes(name)
+  //   );
+  //   return data;
+  // }
+
+  // function fitrPr() {
+  //   const data = products.filter((item) => item.price[0] <= Number(price));
+  //   return data;
+  // }
 
   useEffect(() => {
-    setResults(() => fitrPr());
-  }, [price]);
-
-  function fitry() {
-    const data = products.filter(
-      (item) =>
-        item.title.toLowerCase().includes(name) ||
-        item.description.toLowerCase().includes(name)
-    );
-    return data;
-  }
-
-  function fitrPr() {
-    const data = products.filter((item) => item.price[0] <= Number(price));
-    return data;
-  }
-
-  useEffect(() => {
-    productsdata();
-  }, []);
+    productsdata(page, price, name);
+  }, [page, price, name]);
 
   return (
     <section>
@@ -90,10 +96,11 @@ const Page = () => {
               </select> */}
             </div>
             <div className="mt-10 grid sm:grid-cols-2 gap-8">
-              {results?.map((meal) => (
+              {products?.map((meal) => (
                 <FoodCard key={meal.id} meal={meal} />
               ))}
             </div>
+            <Pagination Count={Count} page={pageN} setPage={setPageN} />
           </div>
           <div className="flex-1 relative">
             <div className="sticky top-8 left-0">
@@ -133,7 +140,6 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-                By
               </div>
             </div>
           </div>
