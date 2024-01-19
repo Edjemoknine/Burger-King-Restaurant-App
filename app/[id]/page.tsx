@@ -13,7 +13,7 @@ import SkeletonDT from "@/components/skeleton/skeleton";
 const fetcher = (...args: any[]) =>
   fetch(...args, { cache: "no-store" }).then((res) => res.json());
 
-const page = ({ params: { id } }) => {
+const PageDetails = ({ params: { id } }) => {
   const { data, error, isLoading } = useSWR<Product>(
     `http://localhost:3000/api/products/${id}`,
     fetcher
@@ -39,7 +39,7 @@ const page = ({ params: { id } }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [ChosenExtras, setChosenExtras] = useState([]);
 
-  const handleChoose = (e, option) => {
+  const handleChoose = (e: any, option: any) => {
     const checked = e.target.checked;
 
     if (checked) {
@@ -49,7 +49,7 @@ const page = ({ params: { id } }) => {
     }
   };
 
-  const slug = ChosenExtras.map((op) => op.text).join();
+  const slug = ChosenExtras.map((op: any) => op.text).join();
 
   if (isLoading) return <SkeletonDT />;
   return (
@@ -59,13 +59,13 @@ const page = ({ params: { id } }) => {
           <div className="relative h-96">
             <Image
               className="h-full w-60 object-contain"
-              src={data.images[currentIMG]}
+              src={data?.images[currentIMG]}
               alt="burger"
               fill
             />
           </div>
           <div className="flex mt-10 justify-center gap-3">
-            {data.images.map((image: string, index: number) => (
+            {data?.images.map((image: string, index: number) => (
               <div key={index} className=" h-32 w-32 relative">
                 <Image
                   className=" cursor-pointer object-cover"
@@ -79,10 +79,10 @@ const page = ({ params: { id } }) => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl uppercase">{data.title}</h2>
+          <h2 className="text-2xl uppercase">{data?.title}</h2>
           <h3 className="font-medium  text-xl">${data?.price[size]}</h3>
           <p className="text-xs text-gray-300 leading-5 min-h-40">
-            {data.description}
+            {data?.description}
           </p>
 
           <div className="flex flex-col gap-3">
@@ -93,13 +93,13 @@ const page = ({ params: { id } }) => {
                 className="px-4 py-2"
               >
                 <option className="bg-black text-white" value={0}>
-                  small 12"(6 Slices)"
+                  small 12 (6 Slices)
                 </option>
                 <option className="bg-black text-white" value={1}>
-                  medium 16"(8 Slices)"
+                  medium 16 (8 Slices)
                 </option>
                 <option className="bg-black text-white" value={2}>
-                  Extra 24"(12 Slices)"
+                  Extra 24 (12 Slices)
                 </option>
               </select>
             </div>
@@ -217,4 +217,4 @@ const page = ({ params: { id } }) => {
   );
 };
 
-export default page;
+export default PageDetails;

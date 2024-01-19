@@ -8,11 +8,10 @@ import { removeProduct } from "@/providers/redux/cartSlice";
 interface OrderType {
   product: Product & { size: number; ChosenExtras: any; quantity: number };
 }
-const page = () => {
-  const { products, total } = useSelector((store) => store.cart);
+const Cart = () => {
+  const { products, total } = useSelector((store: any) => store.cart);
   const dispatch = useDispatch();
 
-  console.log(products);
   const orders = products.map((product: any) => {
     return {
       id: product.id,
@@ -117,4 +116,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Cart;

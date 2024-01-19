@@ -10,9 +10,9 @@ const Menu = () => {
         <h3 className="text-sm">NOT JUST A PIZZA, BUT LIFESTYLE</h3>
         <h1 className="text-5xl font-amita">OUR MENU</h1>
         <p className="text-sm text-gray-300 max-w-xl leading-6">
-          And yes, we're pizza poeple. But we're also human poeple, we lead with
-          our hearts, we believe in giving back to the global communit.Join us,
-          welcome to our pizzeria!
+          And yes, we are pizza poeple. But we are also human poeple, we lead
+          with our hearts, we believe in giving back to the global communit.Join
+          us, welcome to our pizzeria!
         </p>
       </div>
       <Suspense

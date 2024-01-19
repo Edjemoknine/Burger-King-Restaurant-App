@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const page = () => {
+const Contact = () => {
   return (
     <div>
       {" "}
@@ -52,7 +52,7 @@ const page = () => {
               <h1 className="text-3xl font-semibold">MAKE A RESERVETION</h1>
               <div />
               <p>
-                And yes, we're pizza peaple, But we're human people, we lead
+                And yes, we are pizza peaple, But we are human people, we lead
                 with our hearts, we believe in giving back to the global
                 community; join us, welcome to our pizzerias!
               </p>
@@ -84,7 +84,7 @@ const page = () => {
                     className="w-full bg-transparent px-4 py-2 border-2 border-amber-900"
                     name=""
                     placeholder="Special Requests"
-                    rows="5"
+                    rows={5}
                   ></textarea>
                   <div className="flex justify-center pt-6">
                     <button className="px-4 py-2 bg-transparent border border-amber-900">
@@ -168,4 +168,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Contact;
