@@ -1,61 +1,21 @@
 "use client";
-import { getProducts } from "@/actions/action";
 import ByName from "@/components/ByName";
 import ByPrice from "@/components/ByPrice";
-import FoodCard from "@/components/FoodCard";
-import Pagination from "@/components/Pagination";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import StoreMenu from "@/components/StoreMenu";
+import FoodSkelton from "@/components/skeleton/FoodSkelton";
+
+import { Suspense, useState } from "react";
 
 const Page = () => {
-  const [products, setProducts] = useState([]);
-  // const [results, setResults] = useState([...products]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(20);
-
-  const [pageN, setPageN] = useState(0);
-  const [Count, setCounts] = useState();
-  let page = pageN;
-
-  const productsdata = async (page, price, name) => {
-    const { count, products } = await getProducts(page, name);
-    setProducts(products);
-    console.log(products);
-    setCounts(count);
-  };
-
-  // useEffect(() => {
-  //   setResults(() => fitry());
-  // }, [name, products]);
-
-  // useEffect(() => {
-  //   setResults(() => fitrPr());
-  // }, [price]);
-
-  // function fitry() {
-  //   const data = products.filter(
-  //     (item) =>
-  //       item.title.toLowerCase().includes(name) ||
-  //       item.description.toLowerCase().includes(name)
-  //   );
-  //   return data;
-  // }
-
-  // function fitrPr() {
-  //   const data = products.filter((item) => item.price[0] <= Number(price));
-  //   return data;
-  // }
-
-  useEffect(() => {
-    productsdata(page, price, name);
-  }, [page, price, name]);
 
   return (
     <section>
       <div
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1572715376701-98568319fd0b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            "url('https://images.pexels.com/photos/4113503/pexels-photo-4113503.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load')",
           width: "100%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -82,31 +42,24 @@ const Page = () => {
               <span className="text-gray-400 uppercase">
                 showing 1-12 of results :
               </span>
-              {/* <select
-                className="px-4 py-2 outline-none cursor-pointer"
-                name=""
-                id=""
-              >
-                <option className="bg-black" value="">
-                  Data (ASCENDING)
-                </option>
-                <option className="bg-black" value="">
-                  Data (DESCENDING)
-                </option>
-              </select> */}
             </div>
-            <div className="mt-10 grid sm:grid-cols-2 gap-8">
-              {products?.map((meal) => (
-                <FoodCard key={meal.id} meal={meal} />
-              ))}
-            </div>
-            <Pagination Count={Count} page={pageN} setPage={setPageN} />
+            <Suspense
+              fallback={
+                <div className="mt-10 grid sm:grid-cols-2 gap-8">
+                  {[...Array(6)].map((_, i) => (
+                    <FoodSkelton key={i} />
+                  ))}
+                </div>
+              }
+            >
+              <StoreMenu name={name} price={price} />
+            </Suspense>
           </div>
           <div className="flex-1 relative">
             <div className="sticky top-8 left-0">
               <ByName setName={setName} />
               <ByPrice setPrice={setPrice} price={price} />
-              <div className="bg-[#1a1c1f] md:flex hidden flex-col gap-6 mt-6 p-6">
+              {/* <div className="bg-[#1a1c1f] md:flex hidden flex-col gap-6 mt-6 p-6">
                 <h4 className="uppercase text-xl mb-3">featured menu items</h4>
                 <div className="flex  flex-col gap-6">
                   <div className="flex  items-center gap-10 ">
@@ -140,7 +93,7 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

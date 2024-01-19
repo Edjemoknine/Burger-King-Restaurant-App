@@ -28,7 +28,7 @@ const ByName = ({ setName }) => {
         {" "}
         <label htmlFor="dessert">Desserts</label>
         <input
-          onChange={(e) => setName("dessert")}
+          onChange={(e) => setName("cake")}
           type="radio"
           id="dessert"
           name="cat"

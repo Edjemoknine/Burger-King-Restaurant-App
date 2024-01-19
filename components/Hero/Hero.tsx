@@ -3,11 +3,13 @@ import Image from "next/image";
 import styles from "./Hero.module.css";
 const Hero = () => {
   return (
-    <section className={`${styles.hero} max-w-6xl mx-auto p-4 px-8`}>
+    <section
+      className={`${styles.hero} mt-8 md:mt-0 max-w-6xl mx-auto p-4 px-8`}
+    >
       <div className={styles.grid}>
         <div className={styles.Info}>
           <h3>Welcome</h3>
-          <h1 className="md:text-5xl max-w-xl leading-loose text-4xl font-bold">
+          <h1 className="md:text-5xl md:leading-loose leading-10 max-w-xl  text-4xl font-bold">
             WE COOKED YOUR DESIRED PIZZA RECIPE
           </h1>
           <p className="max-w-sm">
@@ -22,7 +24,9 @@ const Hero = () => {
         <div className={`${styles.Left} mt-10 md:mt-0`}>
           <div className={styles.ImgContainer}>
             <Image
-              src={"/hero.jpg"}
+              src={
+                "https://images.pexels.com/photos/13814644/pexels-photo-13814644.jpeg?auto=compress&cs=tinysrgb&w=300"
+              }
               className={styles.Image}
               alt="Hero Image"
               width={300}

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { title } from "process";
 const prisma=new PrismaClient()
 
-export const getProducts=async(page,name)=>{
+export const getProducts=async(page:number,name:string,price:number)=>{
     const pageNum = page ?? 0; 
     const term = name ?? ""; 
 
@@ -35,7 +35,6 @@ export const getProducts=async(page,name)=>{
 }
 
 export const CreatePro = async(dataPtro:Product) => {
-    console.log(dataPtro)
     const order = await prisma.product.create({
         data:{
             description: dataPtro.description,
@@ -85,7 +84,7 @@ export const getOrder = async(id:string)=>{
     // console.log(id)
     const orders = await prisma.order.findUnique({
         where:{id:id}
-    })
+    }) 
     
     return orders
 

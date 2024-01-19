@@ -1,7 +1,3 @@
-.Header {
-  position: relative;
-}
-
 .logo {
   font-size: 30px;
   font-weight: bold;
@@ -16,13 +12,9 @@
 }
 
 @media (max-width: 776px) {
-  /* .menu {
-    display: flex;
-    border: 2px solid var(--primary);
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.4rem;
-  } */
-
+  .logo {
+    font-size: 20px;
+  }
   .Mobile {
     z-index: 40;
     background-color: black;

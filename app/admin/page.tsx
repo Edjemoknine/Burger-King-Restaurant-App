@@ -1,17 +1,30 @@
+"use client";
 import { getOrders, getProducts } from "@/actions/action";
-import CreateProModel from "@/components/CreateProModel";
 import CreateProduct from "@/components/CreateProduct";
 import DeletePro from "@/components/DeletePro";
 import NextStep from "@/components/NextStep";
+import Pagination from "@/components/Pagination";
 import UpdatePro from "@/components/UpdatePro";
-import { currentUser, auth } from "@clerk/nextjs";
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
 
-const Admin = async () => {
-  const { products } = await getProducts();
-  console.log(products);
-  const orders = await getOrders();
+const Admin = () => {
+  const [page, setPage] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [count, setCount] = useState(0);
+  const [orders, setOrders] = useState([]);
+
+  const productsdata = async (page) => {
+    const { products, count } = await getProducts(page);
+    const orders = await getOrders();
+    setProducts(products);
+    setCount(count);
+    setOrders(orders);
+  };
+
+  useEffect(() => {
+    productsdata(page);
+  }, [page, products]);
 
   const Status = ["payment", "preparing", "on the way", "delivered", "enjoy"];
   const handleStatus = (orderS: number) => {
@@ -24,7 +37,7 @@ const Admin = async () => {
     return status;
   };
   return (
-    <div className="relative">
+    <div className="relative ">
       <div className="absolute -top-12 right-16 z-50"></div>
       <div
         style={{
@@ -59,7 +72,7 @@ const Admin = async () => {
             <h1 className="font-bold my-10 text-3xl">Products</h1>
             <CreateProduct />
           </div>
-          <table className="w-full text-center">
+          <table className="w-full  text-center">
             <thead>
               <tr>
                 <th>Product</th>
@@ -75,12 +88,14 @@ const Admin = async () => {
               {products.map((product) => (
                 <tr key={product.id}>
                   <td className=" flex mb-2 justify-center items-center">
-                    <Image
-                      src={product.images[0]}
-                      alt="product"
-                      width={80}
-                      height={80}
-                    />
+                    <div className="w-20 h-20 relative">
+                      <Image
+                        src={product.images[0]}
+                        alt="product"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </td>
                   <td>{product.id.slice(0, 5)}</td>
                   <td>{product.title}</td>
@@ -104,6 +119,9 @@ const Admin = async () => {
               ))}
             </tbody>
           </table>
+          <Pagination setPage={setPage} Count={count} page={page} />
+
+          {/* **********Orders Table************* */}
 
           <h1 className="font-bold my-10 text-3xl">Orders</h1>
           <table className="w-full text-center">

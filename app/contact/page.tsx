@@ -8,7 +8,7 @@ const page = () => {
       <div
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1541701851966-739c62ec28a0?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHJlc3R1cmFudHN8ZW58MHx8MHx8fDA%3D')",
+            "url('https://images.pexels.com/photos/1843655/pexels-photo-1843655.jpeg?auto=compress&cs=tinysrgb&w=300')",
           width: "100%",
           backgroundSize: "cover",
 
@@ -38,7 +38,7 @@ const page = () => {
         <div
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1572715376701-98568319fd0b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+              "url('https://images.pexels.com/photos/2551794/pexels-photo-2551794.jpeg?auto=compress&cs=tinysrgb&w=300')",
             width: "100%",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -119,7 +119,7 @@ const page = () => {
               <div className="w-full h-1/2 relative">
                 <Image
                   src={
-                    "https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdHVyYW50c3xlbnwwfHwwfHx8MA%3D%3D"
+                    "https://images.pexels.com/photos/1841184/pexels-photo-1841184.jpeg?auto=compress&cs=tinysrgb&w=300"
                   }
                   alt=""
                   fill

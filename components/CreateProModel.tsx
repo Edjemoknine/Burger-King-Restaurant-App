@@ -22,9 +22,8 @@ const ACCEPTED_IMAGE_TYPES = [
 ];
 
 const CreateProModel = ({ setOpen }) => {
-  const { pending } = useFormStatus();
-
-  console.log(pending);
+  // const { pending } = useFormStatus();
+  const [pending, setPending] = useState(false);
 
   const productSchema = z.object({
     title: z.string().min(3, { message: "please add title to product" }),
@@ -67,6 +66,7 @@ const CreateProModel = ({ setOpen }) => {
   };
   //   const [ImgUrls, setImgUrls] = useState([]);
   const onSubmit = async (data: Schema) => {
+    setPending(true);
     var imagesFiles = data.images;
 
     try {
@@ -76,10 +76,7 @@ const CreateProModel = ({ setOpen }) => {
         const data = await uploadCloud(imagesFiles[i]);
         arr.push(data);
       }
-
-      // console.log(arr);
       const images = arr?.map((image) => image.url);
-      // console.log(images);
 
       const dataPtro = {
         title: data.title,
@@ -92,6 +89,7 @@ const CreateProModel = ({ setOpen }) => {
     } catch (error) {
       console.log(error);
     }
+    setPending(false);
 
     setOpen(false);
     reset();
@@ -244,12 +242,15 @@ const CreateProModel = ({ setOpen }) => {
               name="images"
             />
           </div>
-          <input
+          <button
             type="submit"
+            aria-disabled={pending}
             disabled={pending}
             value={"Create"}
             className="px-4 py-2 cursor-pointer rounded-md bg-green-500 font-semibold hover:bg-green-600 mt-3 duration-300 disabled:bg-slate-400 disabled:cursor-not-allowed"
-          />
+          >
+            {pending ? "Creating..." : "Create"}
+          </button>
           {/* Create
           </> */}
           {/* <input type="file" name="" id="" /> */}

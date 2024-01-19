@@ -1,5 +1,6 @@
 "use client";
-const Pagination = ({ setPage, page, Count }) => {
+
+const Pagination = ({ Count, page, setPage }) => {
   let hasPro = page * 6 >= Count - 6;
 
   return (

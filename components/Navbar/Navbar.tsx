@@ -1,12 +1,13 @@
 "use client";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
+import { ShoppingCart } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { UserButton, SignedIn, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 const Links = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/store" },
@@ -16,7 +17,7 @@ const Links = [
 const Navbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(true);
-  const { isAdmin, Quantity } = useSelector((store) => store.cart);
+  const { isAdmin, Quantity } = useSelector((store: any) => store.cart);
   const { user } = useUser();
 
   useEffect(() => {
@@ -24,8 +25,10 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <header className={`${styles.Header} relative`}>
-      <div className={"max-w-6xl mx-auto p-4 px-8 "}>
+    <header
+      className={`${styles.Header} z-50 bg-[#0f0f0f]   sticky top-0 left-0 w-full `}
+    >
+      <div className={"max-w-6xl overflow-x-hidden mx-auto p-4 px-8 "}>
         <div
           style={{
             width: "100%",
@@ -33,11 +36,14 @@ const Navbar = () => {
             alignItems: "center",
             justifyContent: "space-between",
           }}
+          className="overflow-x-hidden py-2"
         >
           <Link className={`${styles.logo} font-amita`} href={"/"}>
             <span className={styles.span}>Burger</span> king
           </Link>
-          <nav className={` items-center justify-center gap-6 hidden md:flex`}>
+          <nav
+            className={` items-center justify-center gap-6 flex-1 hidden md:flex`}
+          >
             {Links.map((link) => (
               <Link
                 className={`${
@@ -50,7 +56,9 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-          <div className={` items-center gap-6 hidden md:flex`}>
+          <div
+            className={` items-center gap-6 flex flex-1 md:flex-initial justify-end mr-4`}
+          >
             {user && isAdmin && (
               <Link
                 className={`${pathname === "/login" && styles.active}`}
@@ -64,10 +72,11 @@ const Navbar = () => {
               className={`${pathname === "/book" && styles.active} relative`}
               href={"/cart"}
             >
-              <p className="text-[10px] text-white flex justify-center items-center absolute right-0 -top-2 bg-amber-700 rounded-full w-4 h-4">
+              <p className="text-[10px] text-white z-50 flex justify-center items-center absolute right-0 -top-2 bg-amber-700 rounded-full w-4 h-4">
                 {Quantity}
               </p>
-              <Image src={"/cart1.svg"} width={30} height={30} alt="cart" />
+              <ShoppingCart />
+              {/* <Image src={"/cart1.svg"} width={30} height={30} alt="cart" /> */}
             </Link>
             {!user && (
               <Link
@@ -98,13 +107,13 @@ const Navbar = () => {
 
           <div
             className={`${
-              open ? "-right-[200%]" : "right-0"
-            } md:hidden flex flex-col duration-300 font-semibold gap-10 items-center w-full h-screen justify-center text-3xl rounded-md p-6 bg-black absolute  top-[77px]  z-50`}
+              open ? "-right-[100%]" : "right-0"
+            } md:hidden flex flex-col duration-300 font-semibold gap-10 items-center w-full h-screen justify-center text-3xl rounded-md p-6 bg-black fixed  top-[77px]  z-50`}
           >
             {Links.map((link) => (
               <Link
                 className={`${
-                  pathname === link.href && styles.active
+                  pathname === link.href && "text-white"
                 } text-amber-700 hover:text-white duration-300`}
                 href={link.href}
                 key={link.label}
@@ -112,18 +121,6 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              className={`${pathname === "/login" && styles.active}`}
-              href={"/login"}
-            >
-              Login/Register
-            </Link>
-            <Link
-              className={`${pathname === "/book" && styles.active}`}
-              href={"/book"}
-            >
-              Cart
-            </Link>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function RootLayout({
           <ReduxProvider>
             <Navbar />
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
-              {children}
+              <main className="overflow-x-hidden"> {children}</main>
             </SkeletonTheme>
           </ReduxProvider>
           <Footer />

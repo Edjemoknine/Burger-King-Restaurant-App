@@ -23,10 +23,10 @@ const page = ({ params: { id } }) => {
     fetcher
   );
 
-  const RelatedPro = related?.filter(
-    (pro) =>
-      pro.title.toLowerCase().includes(data?.title.toLocaleLowerCase()) &&
-      pro.id !== data?.id
+  const RelatedPro = related?.filter((pro: any) =>
+    pro.title
+      .toLowerCase()
+      .includes(data?.title.toLowerCase() && pro.id !== data?.id)
   );
 
   const dispatch = useDispatch();

@@ -7,18 +7,18 @@ const About = () => {
     <section
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1549590143-d5855148a9d5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+          "url('https://images.pexels.com/photos/784633/pexels-photo-784633.jpeg?auto=compress&cs=tinysrgb&w=300')",
         // height: "100vh",
         width: "100%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
       }}
-      className={`${styles.hero} minh-h-screen py-20 my-20`}
+      className={`${styles.hero} min-h-screen py-20 my-20`}
     >
       <div className="max-w-6xl mx-auto p-4 px-8">
         <div
-          className={`${styles.grid} flex md:flex-row flex-col-reverse items-center space-between gap-10 `}
+          className={`${styles.grid} flex md:!flex-row !flex-col-reverse  items-center space-between gap-10 `}
         >
           <div className={styles.Left}>
             <div
@@ -26,7 +26,9 @@ const About = () => {
              before:bg-[#b66407] before:w-1/2 before:h-1/2 before:-bottom-5 before:-right-5 before:absolute before:-z-10  "
             >
               <Image
-                src={"/chef.jpg"}
+                src={
+                  "https://images.pexels.com/photos/3437689/pexels-photo-3437689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                }
                 className={"w-full h-full object-cover"}
                 alt="Hero Image"
                 width={300}

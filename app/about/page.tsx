@@ -7,7 +7,7 @@ const page = () => {
       <div
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1572715376701-98568319fd0b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            "url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
           width: "100%",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -105,7 +105,7 @@ const page = () => {
             <div className="w-full h-[350px] relative">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1561043433-9265f73e685f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  "https://images.pexels.com/photos/4078054/pexels-photo-4078054.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt=""
                 fill
@@ -125,7 +125,7 @@ const page = () => {
             <div className="w-full h-[350px] relative">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  "https://images.pexels.com/photos/5182122/pexels-photo-5182122.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt=""
                 fill
@@ -145,7 +145,7 @@ const page = () => {
             <div className="w-full h-[350px] relative">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1572552635104-daf938e0aa1f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  "https://images.pexels.com/photos/2825226/pexels-photo-2825226.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt=""
                 fill
@@ -184,7 +184,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzN8fGNoZWYlMjBtYWtlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+                  "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -194,7 +194,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fGNoZWYlMjBtYWtlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+                  "https://images.pexels.com/photos/2825225/pexels-photo-2825225.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -204,7 +204,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1432139509613-5c4255815697?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGNoZWYlMjBtYWtlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+                  "https://images.pexels.com/photos/775863/pexels-photo-775863.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -214,7 +214,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1516100882582-96c3a05fe590?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGNoZWYlMjBtYWtlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+                  "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -224,7 +224,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1455853739633-8c94c03d8121?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY2fHxjaGVmJTIwbWFrZSUyMGZvb2R8ZW58MHx8MHx8fDA%3D"
+                  "https://images.pexels.com/photos/2412950/pexels-photo-2412950.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -234,7 +234,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+                  "https://images.pexels.com/photos/11960537/pexels-photo-11960537.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -244,7 +244,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGZvb2R8ZW58MHx8MHx8fDA%3D"
+                  "https://images.pexels.com/photos/5745991/pexels-photo-5745991.jpeg?auto=compress&cs=tinysrgb&w=300"
                 }
                 alt="Imag"
                 fill
@@ -254,7 +254,7 @@ const page = () => {
             <div className="relative h-60">
               <Image
                 src={
-                  "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGZvb2R8ZW58MHx8MHx8fDA%3D"
+                  "https://images.pexels.com/photos/12645186/pexels-photo-12645186.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"
                 }
                 alt="Imag"
                 fill
@@ -275,7 +275,7 @@ const page = () => {
         }}
         className={` relative py-16 flex items-center px-8`}
       >
-        <div className="relative z-10 flex flex-col text-center">
+        <div className="relative max-w-6xl mx-auto px-8 z-10 flex flex-col text-center">
           <div className="flex flex-col gap-6 ">
             <h3>NOT JUST A PIZZA. BUT LIFESTYLE</h3>
             <h1 className="text-3xl font-semibold">MAKE A RESERVETION</h1>
