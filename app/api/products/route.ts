@@ -2,7 +2,7 @@ import { PrismaClient,Product } from "@prisma/client";
 import { NextResponse } from "next/server"
 const prisma = new PrismaClient();
 
-export const POST= async(request)=>{
+export const POST= async(request:Request)=>{
     const body:Product= await request.json()
 
     try {
@@ -15,7 +15,7 @@ export const POST= async(request)=>{
         return new NextResponse(error,{status:500})
     }
 }
-export const GET= async(request)=>{
+export const GET= async(request:Request)=>{
     try {
        const products= await prisma.product.findMany()
 

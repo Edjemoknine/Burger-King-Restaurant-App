@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const POST = async(request:NextRequest)=>{
     const body= await request.json()
-    const generateOrders=body.orders.map(order=>{return `${order.quantity} | ${order.name} | ${order.slug}`})
+    const generateOrders=body.orders.map((order:any)=>{return `${order.quantity} | ${order.name} | ${order.slug}`})
 
     try {
 

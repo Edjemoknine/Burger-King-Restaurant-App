@@ -10,15 +10,19 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
 import SkeletonDT from "@/components/skeleton/skeleton";
 
+interface ProType extends Product {
+  quantity: number;
+}
+
 const fetcher = (url: string | URL | Request) =>
   fetch(url, { cache: "no-store" }).then((res) => res.json());
 
 const PageDetails = ({ params: { id } }: { params: any }) => {
-  const { data, error, isLoading } = useSWR<Product[]>(
+  const { data, error, isLoading } = useSWR<ProType>(
     `http://localhost:3000/api/products/${id}`,
     fetcher
   );
-  const { data: related } = useSWR<Product[]>(
+  const { data: related } = useSWR<ProType[]>(
     `http://localhost:3000/api/products`,
     fetcher
   );
@@ -59,7 +63,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
           <div className="relative h-96">
             <Image
               className="h-full w-60 object-contain"
-              src={data?.images[currentIMG]}
+              src={data?.images[currentIMG] || " "}
               alt="burger"
               fill
             />

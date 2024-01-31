@@ -5,8 +5,11 @@ import Image from "next/image";
 import CheckoutButton from "@/components/CheckoutButton";
 import { removeProduct } from "@/providers/redux/cartSlice";
 
-interface OrderType {
-  product: Product & { size: number; ChosenExtras: any; quantity: number };
+interface OrderType extends Product {
+  size: number;
+  ChosenExtras: any;
+  quantity: number;
+  slug: string;
 }
 const Cart = () => {
   const { products, total } = useSelector((store: any) => store.cart);
@@ -62,7 +65,7 @@ const Cart = () => {
                       {product.title}
                     </td>
                     <td className="">
-                      {product.ChosenExtras.map((op) => (
+                      {product.ChosenExtras.map((op: any) => (
                         <span className="text-xs" key={op.id}>
                           {op.text} |
                         </span>
@@ -74,7 +77,7 @@ const Cart = () => {
                       $
                       {(product.price[product.size] +
                         product.ChosenExtras?.reduce(
-                          (sum, pro) => sum + Number(pro.price),
+                          (sum: any, pro: any) => sum + Number(pro.price),
                           0
                         )) *
                         product.quantity}

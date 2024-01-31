@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 const prisma = new PrismaClient();
 
 
-export const GET= async(request,{params})=>{
+export const GET= async(request:Request,{params})=>{
     const {id}=params
    
     try {

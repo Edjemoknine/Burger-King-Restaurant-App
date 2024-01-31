@@ -9,7 +9,7 @@ const enviroment=new paypal.core.SandboxEnvironment(clientId,secretId)
 
 const client=new paypal.core.PayPalHttpClient(enviroment)
 
-export const POST = async(req) => {
+export const POST = async(req:Request) => {
     
     const {total,orders}=await req.json()
 
