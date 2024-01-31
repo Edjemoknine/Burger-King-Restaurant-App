@@ -3,7 +3,7 @@ import { Prisma, PrismaClient, Product, } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 const prisma=new PrismaClient()
 
-export const getProducts=async(page:number,name:string,price:number)=>{
+export const getProducts=async(page:number,name:string="",price:number=0)=>{
     const pageNum = page ?? 0; 
     const term = name ?? ""; 
 

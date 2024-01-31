@@ -14,7 +14,7 @@ const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [count, setCount] = useState(0);
   const [orders, setOrders] = useState<Order[]>([]);
-
+const name=""
   const productsdata = async (page: any) => {
     const { products, count } = await getProducts(page);
     const orders = await getOrders();
@@ -101,13 +101,13 @@ const Admin = () => {
                   <td>{product.id.slice(0, 5)}</td>
                   <td>{product.title}</td>
                   <td>{product.description.slice(0, 10)}...</td>
-                  <td className="">
+                  {/* <td className="">
                     {product.extraOptions.map((op, i) => (
                       <span className="text-xs" key={i}>
                         {op?.text} | ${op?.price} <br />
                       </span>
                     ))}
-                  </td>
+                  </td> */}
                   <td>${product.price[0]}</td>
 
                   <td>

@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
 import SkeletonDT from "@/components/skeleton/skeleton";
 
-const fetcher: Fetcher<Product[]> = (...args) =>
-  fetch(...args, { cache: "no-store" }).then((res) => res.json());
+const fetcher = (url: string | URL | Request) =>
+  fetch(url, { cache: "no-store" }).then((res) => res.json());
 
 const PageDetails = ({ params: { id } }: { params: any }) => {
   const { data, error, isLoading } = useSWR<Product[]>(
@@ -39,15 +39,15 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [ChosenExtras, setChosenExtras] = useState([]);
 
-  const handleChoose = (e: any, option: any) => {
-    const checked = e.target.checked;
+  // const handleChoose = (e: any, option: any) => {
+  //   const checked = e.target.checked;
 
-    if (checked) {
-      setChosenExtras([...ChosenExtras, option]);
-    } else {
-      setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
-    }
-  };
+  //   if (checked) {
+  //     setChosenExtras([...ChosenExtras, option]);
+  //   } else {
+  //     setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+  //   }
+  // };
 
   const slug = ChosenExtras.map((op: any) => op.text).join();
 
@@ -89,7 +89,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
             <div className="grid grid-cols-2 gap-6 ">
               <span>Size</span>
               <select
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e: any) => setSize(e.target.value)}
                 className="px-4 py-2"
               >
                 <option className="bg-black text-white" value={0}>
@@ -104,7 +104,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
               </select>
             </div>
             <div className="grid grid-cols-3 gap-3 my-4 ">
-              {data.extraOptions.map((option: any, index: number) => (
+              {/* {data.extraOptions.map((option: any, index: number) => (
                 <div key={option.text} className="flex gap-3 items-center">
                   <label className="cursor-pointer" htmlFor={option.text}>
                     {option.text}
@@ -118,7 +118,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
                     value={index}
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
 
             <div className="flex justify-end">
@@ -129,7 +129,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
             {/* <h3 className="font-medium font-dancing text-xl mt-6">$ 5.00</h3> */}
             <div className="flex items-center gap-3">
               <input
-                onChange={(e) => setQuantity(e.target.value)}
+                onChange={(e: any) => setQuantity(e.target.value)}
                 type="number"
                 value={quantity}
                 className="w-16 text-center p-2  "
