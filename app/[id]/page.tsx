@@ -4,16 +4,16 @@
 import FoodCard from "@/components/FoodCard";
 import Image from "next/image";
 import { useState } from "react";
-import useSWR from "swr";
+import useSWR, { Fetcher } from "swr";
 import { Product } from "@prisma/client";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
 import SkeletonDT from "@/components/skeleton/skeleton";
 
-const fetcher = (...args: any[]) =>
+const fetcher: Fetcher<Product, string> = (...args) =>
   fetch(...args, { cache: "no-store" }).then((res) => res.json());
 
-const PageDetails = ({ params: { id } }) => {
+const PageDetails = ({ params: { id } }: { params: any }) => {
   const { data, error, isLoading } = useSWR<Product>(
     `http://localhost:3000/api/products/${id}`,
     fetcher
