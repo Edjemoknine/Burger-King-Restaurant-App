@@ -39,7 +39,7 @@ export const CreatePro = async(dataPtro:Product) => {
             description: dataPtro.description,
             title: dataPtro.title,
             price: dataPtro.price,
-            extraOptions: dataPtro.extraOptions! ,
+            // extraOptions: dataPtro.extraOptions! ,
             images: dataPtro.images
         }
     })
