@@ -10,15 +10,15 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
 import SkeletonDT from "@/components/skeleton/skeleton";
 
-const fetcher: Fetcher<Product, string> = (...args) =>
+const fetcher: Fetcher<Product[]> = (...args) =>
   fetch(...args, { cache: "no-store" }).then((res) => res.json());
 
 const PageDetails = ({ params: { id } }: { params: any }) => {
-  const { data, error, isLoading } = useSWR<Product>(
+  const { data, error, isLoading } = useSWR<Product[]>(
     `http://localhost:3000/api/products/${id}`,
     fetcher
   );
-  const { data: related } = useSWR<Product>(
+  const { data: related } = useSWR<Product[]>(
     `http://localhost:3000/api/products`,
     fetcher
   );
