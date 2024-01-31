@@ -1,7 +1,6 @@
 "use server";
-import { PrismaClient, Product, } from "@prisma/client";
+import { Prisma, PrismaClient, Product, } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import { title } from "process";
 const prisma=new PrismaClient()
 
 export const getProducts=async(page:number,name:string,price:number)=>{
@@ -40,7 +39,7 @@ export const CreatePro = async(dataPtro:Product) => {
             description: dataPtro.description,
             title: dataPtro.title,
             price: dataPtro.price,
-            extraOptions: dataPtro.extraOptions,
+            extraOptions: dataPtro.extraOptions! ,
             images: dataPtro.images
         }
     })

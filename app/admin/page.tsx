@@ -5,16 +5,17 @@ import DeletePro from "@/components/DeletePro";
 import NextStep from "@/components/NextStep";
 import Pagination from "@/components/Pagination";
 import UpdatePro from "@/components/UpdatePro";
+import { Order, Product } from "@prisma/client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Admin = () => {
   const [page, setPage] = useState(0);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [count, setCount] = useState(0);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
-  const productsdata = async (page) => {
+  const productsdata = async (page: any) => {
     const { products, count } = await getProducts(page);
     const orders = await getOrders();
     setProducts(products);
@@ -103,7 +104,7 @@ const Admin = () => {
                   <td className="">
                     {product.extraOptions.map((op, i) => (
                       <span className="text-xs" key={i}>
-                        {op?.text} | ${op.price} <br />
+                        {op?.text} | ${op?.price} <br />
                       </span>
                     ))}
                   </td>
