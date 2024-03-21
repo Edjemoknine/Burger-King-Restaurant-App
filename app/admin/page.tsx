@@ -14,7 +14,7 @@ const Admin = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [count, setCount] = useState(0);
   const [orders, setOrders] = useState<Order[]>([]);
-const name=""
+  const name = "";
   const productsdata = async (page: any) => {
     const { products, count } = await getProducts(page);
     const orders = await getOrders();
@@ -80,7 +80,7 @@ const name=""
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Extras</th>
+                {/* <th>Extras</th> */}
                 <th>Price</th>
                 <th>Actions</th>
               </tr>

@@ -23,12 +23,12 @@ const Page = () => {
         }}
         className={` relative h-96 py-20 flex justify-center items-center `}
       >
-        <div className="relative z-10 flex flex-col gap-6 text-center">
+        <div className="relative z-10 flex flex-col gap-6 text-center max-w-3xl mx-auto">
           <p>DELICIOUS FOOD FOR THE BEST CUSTOMER</p>
           <h1 className="font-amita text-4xl md:text-7xl font-medium">
             Welcome To Our Resturant{" "}
           </h1>
-          <span>
+          <span className="max-w-xl mx-auto">
             Try the most popular food in the world with the best chefs team
             gathered from all the world just for you!
           </span>

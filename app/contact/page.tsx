@@ -24,13 +24,13 @@ const Contact = () => {
           <h1 className="font-dancing -mb-10 text-4xl md:text-7xl font-bold">
             +213 65699349
           </h1>
-          <Image
+          {/* <Image
             src={"/underG.png"}
             className="text-white -mb-10"
             alt="about"
             width={400}
             height={100}
-          />
+          /> */}
         </div>
         <div className="absolute bg-black/70 inset-0"></div>
       </div>
