@@ -140,9 +140,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
               />
               <button
                 onClick={() =>
-                  dispatch(
-                    addProduct({ ...data, quantity, size, ChosenExtras, slug })
-                  )
+                  dispatch(addProduct({ ...data, quantity, size, slug }))
                 }
                 className="text-black px-4 py-2 hover:text-amber-600 bg-amber-600 hover:bg-transparent border border-amber-600"
               >
