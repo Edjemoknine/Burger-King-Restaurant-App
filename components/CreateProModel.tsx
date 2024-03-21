@@ -21,7 +21,7 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/webp",
 ];
 
-const CreateProModel = ({ setOpen }) => {
+const CreateProModel = ({ setOpen }: { setOpen: (e: any) => void }) => {
   // const { pending } = useFormStatus();
   const [pending, setPending] = useState(false);
 
@@ -212,7 +212,7 @@ const CreateProModel = ({ setOpen }) => {
                 type="number"
                 name="optionPrice"
                 value={optPrice}
-                onChange={(e) => setOptPrice(e.target.value)}
+                onChange={(e) => setOptPrice(Number(e.target.value))}
                 placeholder="Ex: price:$3"
               />
 
@@ -231,7 +231,7 @@ const CreateProModel = ({ setOpen }) => {
             </label>
             {errors.images && (
               <span className="text-[10px] text-red-500">
-                {errors?.images.message}
+                {errors?.images.message as string}
               </span>
             )}
             <input
