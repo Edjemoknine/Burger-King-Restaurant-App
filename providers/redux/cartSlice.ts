@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {Product} from "@prisma/client"
-type ProductProps = Product & {quantity:number, size:string}
+type ProductProps = Product & {quantity:number, size:number}
 const initialState={
     products:[],
     total: 0,
