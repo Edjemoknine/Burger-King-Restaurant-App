@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {Product} from "@prisma/client"
+type ProductProps = Product & {quantity:number}
 const initialState={
     products:[],
     total: 0,
@@ -10,7 +11,7 @@ const initialState={
     name:"cart",
     initialState,
     reducers:{
-        addProduct:(state,{payload}:{payload:Product})=>{
+        addProduct:(state,{payload}:{payload:ProductProps})=>{
 
           
                 state.Quantity+=1
