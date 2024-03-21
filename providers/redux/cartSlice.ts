@@ -11,17 +11,17 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, { payload }: { payload: ProductProps }) => {
+    addProduct: (state, { payload }: { payload: any }) => {
       state.Quantity += 1;
       state.products.push(payload);
 
       state.total = state.products.reduce(
-        (sum, product) =>
+        (sum, product: any) =>
           sum +
           product.quantity *
             (product.price[product.size] +
               product.ChosenExtras?.reduce(
-                (sum, opt) => sum + Number(opt.price),
+                (sum: any, opt: any) => sum + Number(opt.price),
                 0
               )),
         0
@@ -36,7 +36,7 @@ const cartSlice = createSlice({
     removeProduct: (state, { payload }) => {
       console.log(payload);
       state.products = state.products.filter(
-        (product) => product.slug !== payload
+        (product: any) => product.slug !== payload
       );
     },
     checkAdmin: (state, { payload }) => {

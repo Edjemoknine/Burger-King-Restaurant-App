@@ -1,7 +1,11 @@
 import { getOrder } from "@/actions/action";
 import Image from "next/image";
-
-const ClientOrder = async ({ params: { id } }) => {
+type ParamsProps = {
+  params: {
+    id: any;
+  };
+};
+const ClientOrder = async ({ params: { id } }: ParamsProps) => {
   const order = await getOrder(id);
 
   // console.log(order);
@@ -70,7 +74,7 @@ const ClientOrder = async ({ params: { id } }) => {
                         width={40}
                         height={40}
                         className={`${
-                          order.status + 1 === 2 && "animate-pulse"
+                          order && order.status + 1 === 2 && "animate-pulse"
                         }`}
                       />
                       <span>Preparing</span>
@@ -94,7 +98,7 @@ const ClientOrder = async ({ params: { id } }) => {
                         width={40}
                         height={40}
                         className={`${
-                          order.status + 1 === 3 && "animate-pulse"
+                          order && order.status + 1 === 3 && "animate-pulse"
                         }`}
                       />
                       <span>On the way</span>
@@ -118,7 +122,7 @@ const ClientOrder = async ({ params: { id } }) => {
                         width={40}
                         height={40}
                         className={`${
-                          order.status + 1 === 4 && "animate-pulse"
+                          order && order.status + 1 === 4 && "animate-pulse"
                         }`}
                       />
                       <span>Delivered</span>
@@ -142,7 +146,7 @@ const ClientOrder = async ({ params: { id } }) => {
                         width={40}
                         height={40}
                         className={`${
-                          order.status + 1 === 5 && "animate-pulse"
+                          order && order.status + 1 === 5 && "animate-pulse"
                         }`}
                       />
                       <span>Enjoy</span>
