@@ -1,6 +1,6 @@
 "use client";
 
-const ByName = ({ setName }) => {
+const ByName = ({ setName }: { setName: any }) => {
   return (
     <div className="bg-[#1a1c1f] p-6">
       <h4 className="text-2xl uppercase mb-4">Menu Categories</h4>

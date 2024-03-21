@@ -1,6 +1,10 @@
 "use client";
-
-const Pagination = ({ Count, page, setPage }) => {
+type Props = {
+  Count: any;
+  setPage: (e: any) => void;
+  page: number;
+};
+const Pagination = ({ Count, page, setPage }: Props) => {
   let hasPro = page * 6 >= Count - 6;
 
   return (
