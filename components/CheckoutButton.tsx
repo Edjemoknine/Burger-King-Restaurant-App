@@ -15,7 +15,7 @@ const CheckoutButton = ({ orders }: any) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { total } = useSelector((store) => store.cart);
+  const { total } = useSelector((store: any) => store.cart);
 
   return (
     <div className="w-full ">

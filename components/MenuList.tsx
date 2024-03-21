@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 const MenuList = async () => {
-  const { products } = await getProducts();
+  const { products } = await getProducts(1, "", 0);
 
   return (
     <div className="grid md:grid-cols-2 gap-10">
