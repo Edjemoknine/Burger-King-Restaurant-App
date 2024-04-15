@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAdmin(admin));
-  }, [admin, ShowLoader]);
+  }, [admin, ShowLoader, dispatch, router]);
 
   useEffect(() => {
     if (isLoaded) {
@@ -30,7 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         setShowLoader(false);
       }
     }
-  }, [isLoaded, organizationList]);
+  }, [isLoaded, organizationList, router]);
 
   return (
     <div>

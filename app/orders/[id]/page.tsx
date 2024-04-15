@@ -1,7 +1,7 @@
 import { getOrder } from "@/actions/action";
 import Image from "next/image";
 
-const ClientOrder = async ({ params: { id } }) => {
+const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
   const order = await getOrder(id);
 
   // console.log(order);
@@ -29,7 +29,7 @@ const ClientOrder = async ({ params: { id } }) => {
 
                   <td>
                     <div className="flex flex-wrap flex-col gap-1 justify-center">
-                      {order?.orders.map((or) => (
+                      {order?.orders.map((or: any) => (
                         <span key={or}>{or}</span>
                       ))}
                     </div>

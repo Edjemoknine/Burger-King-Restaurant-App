@@ -7,14 +7,15 @@ import Pagination from "@/components/Pagination";
 import UpdatePro from "@/components/UpdatePro";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Order, Product } from "@prisma/client";
 
 const Admin = () => {
   const [page, setPage] = useState(0);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [count, setCount] = useState(0);
-  const [orders, setOrders] = useState([]);
-
-  const productsdata = async (page) => {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const name = "";
+  const productsdata = async (page: any) => {
     const { products, count } = await getProducts(page);
     const orders = await getOrders();
     setProducts(products);
@@ -55,14 +56,6 @@ const Admin = () => {
           <h1 className="font-dancing -mb-14 text-4xl  md:text-7xl font-bold">
             Food Decoration The last Touch.
           </h1>
-
-          <Image
-            src={"/underG.png"}
-            className="text-white -mb-10"
-            alt="about"
-            width={400}
-            height={100}
-          />
         </div>
         <div className="absolute bg-black/70 inset-0"></div>
       </div>
@@ -85,7 +78,7 @@ const Admin = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {products?.map((product) => (
                 <tr key={product.id}>
                   <td className=" flex mb-2 justify-center items-center">
                     <div className="w-20 h-20 relative">
@@ -101,7 +94,7 @@ const Admin = () => {
                   <td>{product.title}</td>
                   <td>{product.description.slice(0, 10)}...</td>
                   <td className="">
-                    {product.extraOptions.map((op, i) => (
+                    {product.extraOptions?.map((op: any, i: any) => (
                       <span className="text-xs" key={i}>
                         {op?.text} | ${op.price} <br />
                       </span>
@@ -137,7 +130,7 @@ const Admin = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              {orders?.map((order) => (
                 <tr className="h-16" key={order.id}>
                   <td className="  ">{order?.id.slice(0, 5)}</td>
                   <td className="">{order?.customer}</td>
@@ -145,7 +138,7 @@ const Admin = () => {
 
                   <td>
                     <div className="flex flex-col text-xs">
-                      {order?.orders.map((or) => (
+                      {order?.orders.map((or: any) => (
                         <span key={or}>{or}</span>
                       ))}
                     </div>

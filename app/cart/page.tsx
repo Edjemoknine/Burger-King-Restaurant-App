@@ -5,14 +5,16 @@ import Image from "next/image";
 import CheckoutButton from "@/components/CheckoutButton";
 import { removeProduct } from "@/providers/redux/cartSlice";
 
-interface OrderType {
-  product: Product & { size: number; ChosenExtras: any; quantity: number };
+interface OrderType extends Product {
+  size: number;
+  ChosenExtras: any;
+  quantity: number;
+  slug: string;
 }
-const page = () => {
-  const { products, total } = useSelector((store) => store.cart);
+const Cart = () => {
+  const { products, total } = useSelector((store: any) => store.cart);
   const dispatch = useDispatch();
 
-  console.log(products);
   const orders = products.map((product: any) => {
     return {
       id: product.id,
@@ -53,17 +55,17 @@ const page = () => {
                   <tr key={product.slug}>
                     <td className=" flex mb-2 justify-center items-center">
                       <Image
-                        src={product.images[0]}
+                        src={product?.images[0]}
                         alt="product"
                         width={80}
                         height={80}
                       />
                     </td>
                     <td className="font-bold text-amber-700">
-                      {product.title}
+                      {product?.title!}
                     </td>
                     <td className="">
-                      {product.ChosenExtras.map((op) => (
+                      {product.ChosenExtras?.map((op: any) => (
                         <span className="text-xs" key={op.id}>
                           {op.text} |
                         </span>
@@ -75,7 +77,7 @@ const page = () => {
                       $
                       {(product.price[product.size] +
                         product.ChosenExtras?.reduce(
-                          (sum, pro) => sum + Number(pro.price),
+                          (sum: any, pro: any) => sum + Number(pro.price),
                           0
                         )) *
                         product.quantity}
@@ -117,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Cart;

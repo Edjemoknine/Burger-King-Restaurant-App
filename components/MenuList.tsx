@@ -8,7 +8,7 @@ const MenuList = async () => {
 
   return (
     <div className="grid md:grid-cols-2 gap-10">
-      {products.map((meal) => (
+      {products.map((meal: any) => (
         <Link href={`/${meal.id}`} key={meal.id}>
           <div className="flex items-center gap-8">
             <div className="relative h-36 w-36">

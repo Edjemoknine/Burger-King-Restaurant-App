@@ -10,12 +10,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const style = { layout: "vertical" };
-const CheckoutButton = ({ orders }) => {
+const CheckoutButton = ({ orders }: { orders: any }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { total } = useSelector((store) => store.cart);
+  const { total } = useSelector((store: any) => store.cart);
 
   return (
     <div className="w-full ">

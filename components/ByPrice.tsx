@@ -1,6 +1,6 @@
 import React from "react";
 
-const ByPrice = ({ setPrice, price }) => {
+const ByPrice = ({ setPrice, price }: { setPrice: any; price: any }) => {
   return (
     <div className="bg-[#1a1c1f] flex flex-col gap-6 mt-6 p-6">
       <h4 className="uppercase text-xl mb-3">filter by price</h4>
