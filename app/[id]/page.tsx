@@ -49,7 +49,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
     if (checked) {
       setChosenExtras([...ChosenExtras, option]);
     } else {
-      setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+      setChosenExtras(ChosenExtras.filter((op:any) => op.id !== option.id));
     }
   };
 
@@ -108,13 +108,13 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
               </select>
             </div>
             <div className="grid grid-cols-3 gap-3 my-4 ">
-              {/* {data.extraOptions.map((option: any, index: number) => (
+              {data.extraOptions.map((option: any, index: number) => (
                 <div key={option.text} className="flex gap-3 items-center">
                   <label className="cursor-pointer" htmlFor={option.text}>
                     {option.text}
                   </label>
                   <input
-                    onClick={(e) => handleChoose(e, option)}
+                    onClick={(e:any) => handleChoose(e:any, option:any)}
                     className="w-4 h-4 bg-black"
                     type="checkbox"
                     name={option.text}
@@ -122,7 +122,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
                     value={index}
                   />
                 </div>
-              ))} */}
+              ))}
             </div>
 
             <div className="flex justify-end">
