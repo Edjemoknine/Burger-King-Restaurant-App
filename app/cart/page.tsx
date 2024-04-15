@@ -24,7 +24,7 @@ const Cart = () => {
       quantity: product.quantity,
       price:
         product.price[product.size] +
-        product.ChosenExtras?.reduce(
+        product?.ChosenExtras?.reduce(
           (sum: any, pro: any) => sum + Number(pro.price),
           0
         ),
@@ -65,7 +65,7 @@ const Cart = () => {
                       {product.title}
                     </td>
                     <td className="">
-                      {product.ChosenExtras.map((op: any) => (
+                      {product?.ChosenExtras?.map((op: any) => (
                         <span className="text-xs" key={op.id}>
                           {op.text} |
                         </span>
@@ -76,7 +76,7 @@ const Cart = () => {
                     <td className="font-bold">
                       $
                       {(product.price[product.size] +
-                        product.ChosenExtras?.reduce(
+                        product?.ChosenExtras?.reduce(
                           (sum: any, pro: any) => sum + Number(pro.price),
                           0
                         )) *
