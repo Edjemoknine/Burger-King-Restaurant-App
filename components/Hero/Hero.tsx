@@ -9,7 +9,7 @@ const Hero = () => {
       <div className={styles.grid}>
         <div className={styles.Info}>
           <h3>Welcome</h3>
-          <h1 className="md:text-5xl md:leading-loose leading-10 max-w-xl  text-4xl font-bold">
+          <h1 className="md:text-5xl md:leading-snug leading-10 max-w-xl  text-4xl font-bold">
             WE COOKED YOUR DESIRED PIZZA RECIPE
           </h1>
           <p className="max-w-sm">
