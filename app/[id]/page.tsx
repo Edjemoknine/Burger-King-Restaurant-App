@@ -41,17 +41,17 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
   const [price, setPrice] = useState(data?.price[size]);
 
   const [quantity, setQuantity] = useState<number>(1);
-  const [ChosenExtras, setChosenExtras] = useState([]);
+  const [ChosenExtras, setChosenExtras] = useState<any>([]);
 
-  // const handleChoose = (e: any, option: any) => {
-  //   const checked = e.target.checked;
+  const handleChoose = (e: any, option: any) => {
+    const checked = e.target.checked;
 
-  //   if (checked) {
-  //     setChosenExtras([...ChosenExtras, option]);
-  //   } else {
-  //     setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
-  //   }
-  // };
+    if (checked) {
+      setChosenExtras([...ChosenExtras, option]);
+    } else {
+      setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+    }
+  };
 
   const slug = ChosenExtras.map((op: any) => op.text).join();
 
