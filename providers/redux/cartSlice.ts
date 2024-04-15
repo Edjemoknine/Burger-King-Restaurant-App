@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, { payload }: { payload?: never }) => {
+    addProduct: (state, { payload }: { payload?: never }): any => {
       state.Quantity += 1;
       payload && state.products.push(payload!);
 
