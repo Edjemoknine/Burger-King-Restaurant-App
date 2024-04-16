@@ -39,7 +39,7 @@ const page = ({ params: { id } }: { params: any }) => {
   const [price, setPrice] = useState(data?.price[size]);
 
   const [quantity, setQuantity] = useState<number>(1);
-  const [ChosenExtras, setChosenExtras] = useState([]);
+  const [ChosenExtras, setChosenExtras] = useState<any>([]);
 
   const handleChoose = (e: any, option: any) => {
     const checked = e.target.checked;
@@ -47,11 +47,11 @@ const page = ({ params: { id } }: { params: any }) => {
     if (checked) {
       setChosenExtras([...ChosenExtras, option]);
     } else {
-      setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+      setChosenExtras(ChosenExtras.filter((op: any) => op.id !== option.id));
     }
   };
 
-  const slug = ChosenExtras.map((op) => op.text).join();
+  const slug = ChosenExtras.map((op: any) => op.text).join();
 
   if (isLoading) return <SkeletonDT />;
   return (
@@ -61,7 +61,7 @@ const page = ({ params: { id } }: { params: any }) => {
           <div className="relative h-96">
             <Image
               className="h-full w-60 object-contain"
-              src={data?.images[currentIMG]}
+              src={data?.images[currentIMG]!}
               alt="burger"
               fill
             />
@@ -139,7 +139,13 @@ const page = ({ params: { id } }: { params: any }) => {
               <button
                 onClick={() =>
                   dispatch(
-                    addProduct({ ...data, quantity, size, ChosenExtras, slug })
+                    addProduct({
+                      ...data,
+                      quantity,
+                      size,
+                      ChosenExtras,
+                      slug,
+                    } as any)
                   )
                 }
                 className="text-black px-4 py-2 hover:text-amber-600 bg-amber-600 hover:bg-transparent border border-amber-600"
