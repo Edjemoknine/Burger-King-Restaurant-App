@@ -35,12 +35,12 @@ const FoodCard = ({ meal }: any) => {
         <span className="text-xl font-dancing font-medium">
           ${meal.price[0]}
         </span>
-        <button
+{/*         <button
           onClick={() => dispatch(addProduct(meal))}
           className="px-4 text-sm py-2 border-gray-300 border"
         >
           ADD TO CART {">"}
-        </button>
+        </button> */}
       </div>
     </div>
   );
