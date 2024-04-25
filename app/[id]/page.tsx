@@ -57,7 +57,8 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
 
   if (isLoading) return (
     <div>
-        <SkeletonDT />
+      Loading...
+{/*         <SkeletonDT /> */}
     </div>
   )
   return (
