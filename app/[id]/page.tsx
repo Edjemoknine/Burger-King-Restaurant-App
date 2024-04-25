@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 "use client";
 
 import FoodCard from "@/components/FoodCard";
@@ -62,6 +62,8 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
     </div>
   )
   return (
+    <>
+   
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
       <div className="grid md:grid-cols-2 gap-16">
         <div>
@@ -221,6 +223,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
