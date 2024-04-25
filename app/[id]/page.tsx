@@ -55,10 +55,11 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
 
   const slug = ChosenExtras.map((op: any) => op.text).join();
 
-  if (isLoading) return<div>
-  
-    <SkeletonDT />
-  </div>
+  if (isLoading) return (
+    <div>
+        <SkeletonDT />
+    </div>
+  )
   return (
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
       <div className="grid md:grid-cols-2 gap-16">
