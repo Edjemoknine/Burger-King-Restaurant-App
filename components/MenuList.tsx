@@ -4,10 +4,10 @@ import Link from "next/link";
 import React from "react";
 
 const MenuList = async () => {
-  const { products } = await getProducts(1);
+  const { products } = await getProducts(0, "", 0);
 
   return (
-    <div className="grid md:grid-cols-2 gap-10">
+    <div className="grid md:grid-cols-2 place-items-center gap-10">
       {products.map((meal) => (
         <Link href={`/${meal.id}`} key={meal.id}>
           <div className="flex items-center gap-8">
