@@ -4,18 +4,20 @@
 import FoodCard from "@/components/FoodCard";
 import Image from "next/image";
 import { useState } from "react";
-import useSWR from "swr";
+import useSWR, { Fetcher } from "swr";
 import { Product } from "@prisma/client";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/providers/redux/cartSlice";
 import SkeletonDT from "@/components/skeleton/skeleton";
+
 interface ProType extends Product {
   quantity: number;
 }
+
 const fetcher = (url: string | URL | Request) =>
   fetch(url, { cache: "no-store" }).then((res) => res.json());
 
-const page = ({ params: { id } }: { params: any }) => {
+const PageDetails = ({ params: { id } }: { params: any }) => {
   const { data, error, isLoading } = useSWR<ProType>(
     `http://localhost:3000/api/products/${id}`,
     fetcher
@@ -45,7 +47,7 @@ const page = ({ params: { id } }: { params: any }) => {
     const checked = e.target.checked;
 
     if (checked) {
-      setChosenExtras([...ChosenExtras, option]);
+      setChosenExtras([...ChosenExtras, option] as any);
     } else {
       setChosenExtras(ChosenExtras.filter((op: any) => op.id !== option.id));
     }
@@ -54,6 +56,7 @@ const page = ({ params: { id } }: { params: any }) => {
   const slug = ChosenExtras.map((op: any) => op.text).join();
 
   if (isLoading) return <SkeletonDT />;
+
   return (
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
       <div className="grid md:grid-cols-2 gap-16">
@@ -61,16 +64,16 @@ const page = ({ params: { id } }: { params: any }) => {
           <div className="relative h-96">
             <Image
               className="h-full w-60 object-contain"
-              src={data?.images[currentIMG]!}
+              src={data?.images[currentIMG] || " "}
               alt="burger"
               fill
             />
           </div>
           <div className="flex mt-10 justify-center gap-3">
-            {data?.images?.map((image: string, index: number) => (
+            {data?.images.map((image: string, index: number) => (
               <div key={index} className=" h-32 w-32 relative">
                 <Image
-                  className=" cursor-pointer object-cover"
+                  className=" cursor-pointer object-contain"
                   fill
                   src={image}
                   alt="burger"
@@ -138,15 +141,7 @@ const page = ({ params: { id } }: { params: any }) => {
               />
               <button
                 onClick={() =>
-                  dispatch(
-                    addProduct({
-                      ...data,
-                      quantity,
-                      size,
-                      ChosenExtras,
-                      slug,
-                    } as any)
-                  )
+                  dispatch(addProduct({ ...data, quantity, size, slug } as any))
                 }
                 className="text-black px-4 py-2 hover:text-amber-600 bg-amber-600 hover:bg-transparent border border-amber-600"
               >
@@ -225,4 +220,4 @@ const page = ({ params: { id } }: { params: any }) => {
   );
 };
 
-export default page;
+export default PageDetails;
