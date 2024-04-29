@@ -42,6 +42,7 @@ export const POST = async (req: Request) => {
               value: `${total}`,
             },
 <<<<<<< HEAD
+<<<<<<< HEAD
           } as any,
 =======
             shipping: {
@@ -55,12 +56,18 @@ export const POST = async (req: Request) => {
             tax_total: { currency_code: "USD", value: "15.00" },
           },
 >>>>>>> main
+=======
+          } as any,
+>>>>>>> main
         },
         items: [...products],
       },
     ],
   });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
   // request.requestBody({
   //   intent: "CAPTURE",
   //   purchase_units: [
@@ -88,6 +95,9 @@ export const POST = async (req: Request) => {
   //     },
   //   ],
   // });
+<<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
   const response = await client.execute(request);

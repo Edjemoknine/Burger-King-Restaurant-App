@@ -16,7 +16,7 @@ const FoodCard = ({ meal }: any) => {
         <Link href={`/${meal.id}`}>
           <div className="w-44 h-44 relative mx-auto">
             <Image
-              className=" object-cover"
+              className=" object-contain"
               src={meal.images[0]}
               alt="food img"
               fill
@@ -24,7 +24,7 @@ const FoodCard = ({ meal }: any) => {
           </div>
         </Link>
       </div>
-      <div className="flex flex-col mt-16 gap-6 items-center text-center">
+      <div className="flex flex-col mt-16 gap-3 items-center text-center">
         <Link href={`/${meal.id}`}>
           <h4
             className="text-xl  font-semibold uppercase
@@ -39,12 +39,12 @@ const FoodCard = ({ meal }: any) => {
         <span className="text-xl font-dancing font-medium">
           ${meal.price[0]}
         </span>
-        <button
+        {/* <button
           onClick={() => dispatch(addProduct(meal))}
           className="px-4 text-sm py-2 border-gray-300 border"
         >
           ADD TO CART {">"}
-        </button>
+        </button> */}
       </div>
     </div>
   );

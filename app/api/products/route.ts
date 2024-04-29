@@ -3,11 +3,16 @@ import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const POST = async (request: Request) => {
   const body: Product = await request.json();
 =======
 export const POST= async(request:Request)=>{
     const body:Product= await request.json()
+>>>>>>> main
+=======
+export const POST = async (request: Request) => {
+  const body: Product = await request.json();
 >>>>>>> main
 
   try {
@@ -24,11 +29,15 @@ export const GET = async (request: Request) => {
     const products = await prisma.product.findMany();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
     return new NextResponse(JSON.stringify(products), { status: 500 });
   } catch (error: any) {
     return new NextResponse(error, { status: 500 });
   }
 };
+<<<<<<< HEAD
 =======
        const product= await prisma.product.create({
             data:{...body}
@@ -47,4 +56,6 @@ export const GET= async(request:Request)=>{
         return new NextResponse(error,{status:500})
     }
 }
+>>>>>>> main
+=======
 >>>>>>> main

@@ -1,7 +1,7 @@
 "use client";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, UtensilsCrossed } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
@@ -93,13 +93,7 @@ const Navbar = () => {
             className={` md:hidden flex border-2 border-amber-700 rounded-md p-1`}
           >
             {!open ? (
-              <Image
-                src="/knife.svg"
-                width={10}
-                height={10}
-                alt="menu"
-                className="w-6 text-amber-700 cursor-pointer"
-              />
+              <UtensilsCrossed className="hover:text-amber-700 duration-300 cursor-pointer" />
             ) : (
               <Menu className="hover:text-amber-700 duration-300 cursor-pointer" />
             )}
