@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 "use client";
 
 import FoodCard from "@/components/FoodCard";
@@ -49,14 +49,25 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
     if (checked) {
       setChosenExtras([...ChosenExtras, option]);
     } else {
+<<<<<<< HEAD
       setChosenExtras(ChosenExtras.filter((op) => op.id !== option.id));
+=======
+      setChosenExtras(ChosenExtras.filter((op:any) => op.id !== option.id));
+>>>>>>> 3ffde5593d5a6f71a5d70e74297ef58b905045e4
     }
   };
 
   const slug = ChosenExtras.map((op: any) => op.text).join();
 
-  if (isLoading) return <SkeletonDT />;
+  if (isLoading) return (
+    <div>
+      Loading...
+{/*         <SkeletonDT /> */}
+    </div>
+  )
   return (
+    <>
+   
     <div className="max-w-6xl mx-auto mt-10 p-4 px-8">
       <div className="grid md:grid-cols-2 gap-16">
         <div>
@@ -108,13 +119,13 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
               </select>
             </div>
             <div className="grid grid-cols-3 gap-3 my-4 ">
-              {/* {data.extraOptions.map((option: any, index: number) => (
+              {data.extraOptions.map((option: any, index: number) => (
                 <div key={option.text} className="flex gap-3 items-center">
                   <label className="cursor-pointer" htmlFor={option.text}>
                     {option.text}
                   </label>
                   <input
-                    onClick={(e) => handleChoose(e, option)}
+                    onClick={(e:any) => handleChoose(e:any, option:any)}
                     className="w-4 h-4 bg-black"
                     type="checkbox"
                     name={option.text}
@@ -122,7 +133,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
                     value={index}
                   />
                 </div>
-              ))} */}
+              ))}
             </div>
 
             <div className="flex justify-end">
@@ -218,6 +229,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
