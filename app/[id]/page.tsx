@@ -64,7 +64,11 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
           <div className="relative h-96">
             <Image
               className="h-full w-60 object-contain"
+<<<<<<< HEAD
               src={data?.images[currentIMG] || " "}
+=======
+              src={data?.images[currentIMG]}
+>>>>>>> main
               alt="burger"
               fill
             />
@@ -109,7 +113,11 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
               </select>
             </div>
             <div className="grid grid-cols-3 gap-3 my-4 ">
+<<<<<<< HEAD
               {data?.extraOptions?.map((option: any, index: number) => (
+=======
+              {/* {data.extraOptions.map((option: any, index: number) => (
+>>>>>>> main
                 <div key={option.text} className="flex gap-3 items-center">
                   <label className="cursor-pointer" htmlFor={option.text}>
                     {option.text}
@@ -123,7 +131,7 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
                     value={index}
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
 
             <div className="flex justify-end">

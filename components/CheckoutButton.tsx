@@ -10,7 +10,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const style = { layout: "vertical" };
+<<<<<<< HEAD
 const CheckoutButton = ({ orders }: { orders: any }) => {
+=======
+const CheckoutButton = ({ orders }: any) => {
+>>>>>>> main
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();

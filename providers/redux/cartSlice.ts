@@ -19,15 +19,23 @@ const cartSlice = createSlice({
         (sum, product: any) =>
           sum +
           product.quantity *
+<<<<<<< HEAD
             (product.price[Number(product.size)] +
               product.extraOptions?.reduce(
+=======
+            (product.price[product.size] +
+              product.ChosenExtras?.reduce(
+>>>>>>> main
                 (sum: any, opt: any) => sum + Number(opt.price),
                 0
               )),
         0
       );
 
+<<<<<<< HEAD
       console.log(state.total);
+=======
+>>>>>>> main
       console.log(state.products);
     },
     resetCart: (state) => {
@@ -35,7 +43,11 @@ const cartSlice = createSlice({
     },
 
     removeProduct: (state, { payload }) => {
+<<<<<<< HEAD
       state.Quantity -= 1;
+=======
+      console.log(payload);
+>>>>>>> main
       state.products = state.products.filter(
         (product: any) => product.slug !== payload
       );

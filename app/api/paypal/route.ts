@@ -41,12 +41,26 @@ export const POST = async (req: Request) => {
               currency_code: "USD",
               value: `${total}`,
             },
+<<<<<<< HEAD
           } as any,
+=======
+            shipping: {
+              currency_code: "USD",
+              value: "0.00",
+            },
+            discount: { currency_code: "USD", value: "10.00" },
+            handling: { currency_code: "USD", value: "5.00" },
+            insurance: { currency_code: "USD", value: "3.00" },
+            shipping_discount: { currency_code: "USD", value: "2.00" },
+            tax_total: { currency_code: "USD", value: "15.00" },
+          },
+>>>>>>> main
         },
         items: [...products],
       },
     ],
   });
+<<<<<<< HEAD
   // request.requestBody({
   //   intent: "CAPTURE",
   //   purchase_units: [
@@ -74,6 +88,8 @@ export const POST = async (req: Request) => {
   //     },
   //   ],
   // });
+=======
+>>>>>>> main
   const response = await client.execute(request);
   console.log(response);
   return NextResponse.json({ id: response.result.id });

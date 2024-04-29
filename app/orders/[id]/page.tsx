@@ -1,7 +1,16 @@
 import { getOrder } from "@/actions/action";
 import Image from "next/image";
+<<<<<<< HEAD
 
 const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
+=======
+type ParamsProps = {
+  params: {
+    id: any;
+  };
+};
+const ClientOrder = async ({ params: { id } }: ParamsProps) => {
+>>>>>>> main
   const order = await getOrder(id);
 
   // console.log(order);
@@ -70,7 +79,11 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                         width={40}
                         height={40}
                         className={`${
+<<<<<<< HEAD
                           order!.status + 1 === 2 && "animate-pulse"
+=======
+                          order && order.status + 1 === 2 && "animate-pulse"
+>>>>>>> main
                         }`}
                       />
                       <span>Preparing</span>
@@ -94,7 +107,11 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                         width={40}
                         height={40}
                         className={`${
+<<<<<<< HEAD
                           order!.status + 1 === 3 && "animate-pulse"
+=======
+                          order && order.status + 1 === 3 && "animate-pulse"
+>>>>>>> main
                         }`}
                       />
                       <span>On the way</span>
@@ -118,7 +135,11 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                         width={40}
                         height={40}
                         className={`${
+<<<<<<< HEAD
                           order!.status + 1 === 4 && "animate-pulse"
+=======
+                          order && order.status + 1 === 4 && "animate-pulse"
+>>>>>>> main
                         }`}
                       />
                       <span>Delivered</span>
@@ -142,7 +163,11 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                         width={40}
                         height={40}
                         className={`${
+<<<<<<< HEAD
                           order!.status + 1 === 5 && "animate-pulse"
+=======
+                          order && order.status + 1 === 5 && "animate-pulse"
+>>>>>>> main
                         }`}
                       />
                       <span>Enjoy</span>

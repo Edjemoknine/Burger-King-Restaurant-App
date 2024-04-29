@@ -6,7 +6,10 @@ import NextStep from "@/components/NextStep";
 import Pagination from "@/components/Pagination";
 import UpdatePro from "@/components/UpdatePro";
 import { Order, Product } from "@prisma/client";
+<<<<<<< HEAD
 import { Span } from "next/dist/trace";
+=======
+>>>>>>> main
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -73,7 +76,7 @@ const Admin = () => {
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Extras</th>
+                {/* <th>Extras</th> */}
                 <th>Price</th>
                 <th>Actions</th>
               </tr>
@@ -94,6 +97,7 @@ const Admin = () => {
                   <td>{product.id.slice(0, 5)}</td>
                   <td>{product.title}</td>
                   <td>{product.description.slice(0, 10)}...</td>
+<<<<<<< HEAD
                   <td className="">
                     {product.extraOptions.length === 0 && (
                       <span className="text-xs border border-amber-700 text-amber-700 text-center px-4 py-1 rounded-lg">
@@ -101,11 +105,15 @@ const Admin = () => {
                       </span>
                     )}
                     {product.extraOptions.map((op: any, i) => (
+=======
+                  {/* <td className="">
+                    {product.extraOptions.map((op, i) => (
+>>>>>>> main
                       <span className="text-xs" key={i}>
                         {op?.text} | ${op?.price} <br />
                       </span>
                     ))}
-                  </td>
+                  </td> */}
                   <td>${product.price[0]}</td>
 
                   <td>

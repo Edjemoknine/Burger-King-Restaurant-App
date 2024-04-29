@@ -3,11 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+<<<<<<< HEAD
 export const POST = async (request: NextRequest) => {
   const body = await request.json();
   const generateOrders = body.orders.map((order: any) => {
     return `${order.quantity} | ${order.name} | ${order.slug}`;
   });
+=======
+export const POST = async(request:NextRequest)=>{
+    const body= await request.json()
+    const generateOrders=body.orders.map((order:any)=>{return `${order.quantity} | ${order.name} | ${order.slug}`})
+>>>>>>> main
 
   try {
     const order = await prisma.order.create({

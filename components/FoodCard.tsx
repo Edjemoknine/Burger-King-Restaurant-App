@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 
+<<<<<<< HEAD
 const FoodCard = ({ meal }: { meal: any }) => {
+=======
+const FoodCard = ({ meal }: any) => {
+>>>>>>> main
   const dispatch = useDispatch();
   return (
     <div className="bg-[#1a1c1f] p-6 mt-20 relative">
