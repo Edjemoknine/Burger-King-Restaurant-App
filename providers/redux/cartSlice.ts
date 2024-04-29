@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Product } from "@prisma/client";
+type ProductProps = Product & { quantity: number; slug: string; size: number };
 const initialState = {
   products: [],
   total: 0,
@@ -18,20 +19,23 @@ const cartSlice = createSlice({
         (sum, product: any) =>
           sum +
           product.quantity *
-            (product.price[product.size] +
-              product.ChosenExtras?.reduce(
+            (product.price[Number(product.size)] +
+              product.extraOptions?.reduce(
                 (sum: any, opt: any) => sum + Number(opt.price),
                 0
               )),
         0
       );
+
+      console.log(state.total);
+      console.log(state.products);
     },
     resetCart: (state) => {
       state = initialState;
     },
 
     removeProduct: (state, { payload }) => {
-      console.log(payload);
+      state.Quantity -= 1;
       state.products = state.products.filter(
         (product: any) => product.slug !== payload
       );
