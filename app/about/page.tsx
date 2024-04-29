@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-
-const page = () => {
+import { Truck, Carrot, UtensilsCrossed, Pizza } from "lucide-react";
+const About = () => {
   return (
     <div>
       <div
@@ -17,26 +17,13 @@ const page = () => {
       >
         <div className="relative z-10 flex flex-col text-center">
           <h1 className="font-dancing -mb-16 text-7xl font-bold">About Us</h1>
-          <Image
-            src={"/underG.png"}
-            className="text-white"
-            alt="about"
-            width={400}
-            height={200}
-          />
         </div>
         <div className="absolute bg-black/70 inset-0"></div>
       </div>
       <div className="max-w-6xl mx-auto mt-16 p-4 px-8">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-6">
-            <Image
-              // className="mb-6"
-              src={"/knife.svg"}
-              alt=""
-              width={80}
-              height={80}
-            />
+            <UtensilsCrossed width={80} height={80} />
             <h1 className="text-3xl font-semibold">
               Our Restaurant Is A Collective Of Amazing People Striving To Build
               Delightful Italain Cuisine.
@@ -113,7 +100,8 @@ const page = () => {
               />
             </div>
             <div className="flex justify-center bg-[#1a1c1f] p-10 h-[350px]  items-center flex-col gap-3">
-              <Image src={"/pizza-icon.svg"} alt="" width={100} height={100} />
+              {/* <Image src={"/pizza-icon.svg"} alt="" width={100} height={100} /> */}
+              <Pizza width={100} height={100} />
               <h2 className="font-semibold">ORIGINAL RECIPES</h2>
               <p className="text-gray-300">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -133,7 +121,8 @@ const page = () => {
               />
             </div>
             <div className="flex justify-center bg-[#1a1c1f] p-10 h-[350px] items-center flex-col gap-3">
-              <Image src={"/vagan.svg"} alt="" width={100} height={100} />
+              {/* <Image src={"/vagan.svg"} alt="" width={100} height={100} /> */}
+              <Carrot width={100} height={100} />
               <h2 className="font-semibold">ORIGINAL RECIPES</h2>
               <p className="text-gray-300">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -153,7 +142,8 @@ const page = () => {
               />
             </div>
             <div className="flex h-[350px] bg-[#1a1c1f] p-10 justify-center items-center flex-col gap-3">
-              <Image src={"/truck.svg"} alt="" width={100} height={100} />
+              {/* <Image src={"/truck.svg"} alt="" width={100} height={100} /> */}
+              <Truck width={100} height={100} />
               <h2 className="font-semibold">ORIGINAL RECIPES</h2>
               <p className="text-gray-300">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -330,4 +320,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default About;
