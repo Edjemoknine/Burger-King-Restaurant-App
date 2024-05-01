@@ -1,15 +1,9 @@
 "use client";
-import { addProduct } from "@/providers/redux/cartSlice";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
 
-<<<<<<< HEAD
-const FoodCard = ({ meal }: { meal: any }) => {
-=======
 const FoodCard = ({ meal }: any) => {
->>>>>>> main
-  const dispatch = useDispatch();
   return (
     <div className="bg-[#1a1c1f] p-6 mt-20 relative">
       <div className=" absolute left-0 right-0  -top-24">
@@ -39,12 +33,6 @@ const FoodCard = ({ meal }: any) => {
         <span className="text-xl font-dancing font-medium">
           ${meal.price[0]}
         </span>
-        {/* <button
-          onClick={() => dispatch(addProduct(meal))}
-          className="px-4 text-sm py-2 border-gray-300 border"
-        >
-          ADD TO CART {">"}
-        </button> */}
       </div>
     </div>
   );

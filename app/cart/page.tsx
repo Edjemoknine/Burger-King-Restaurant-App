@@ -14,7 +14,6 @@ interface OrderType extends Product {
 const Cart = () => {
   const { products, total } = useSelector((store: any) => store.cart);
   const dispatch = useDispatch();
-  console.log(products);
   const orders = products.map((product: any) => {
     return {
       id: product.id,
@@ -30,8 +29,6 @@ const Cart = () => {
         ),
     };
   });
-
-  console.log(orders);
 
   return (
     <div>
@@ -55,21 +52,17 @@ const Cart = () => {
                   <tr key={product.slug}>
                     <td className=" flex mb-2 justify-center items-center">
                       <Image
-                        src={product?.images[0]}
+                        src={product.images[0]}
                         alt="product"
                         width={80}
                         height={80}
                       />
                     </td>
                     <td className="font-bold text-amber-700">
-                      {product?.title!}
+                      {product.title}
                     </td>
                     <td className="">
-<<<<<<< HEAD
-                      {product.ChosenExtras?.map((op: any) => (
-=======
                       {product?.ChosenExtras?.map((op: any) => (
->>>>>>> main
                         <span className="text-xs" key={op.id}>
                           {op.text} |
                         </span>
@@ -80,15 +73,7 @@ const Cart = () => {
                     <td className="font-bold">
                       $
                       {(product.price[product.size] +
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        product.ChosenExtras?.reduce(
-=======
-                        product?.ChosenExtras?.reduce(
->>>>>>> main
-=======
                         product?.extraOptions?.reduce(
->>>>>>> main
                           (sum: any, pro: any) => sum + Number(pro.price),
                           0
                         )) *
