@@ -1,6 +1,11 @@
 import { getOrder } from "@/actions/action";
+import { Check } from "lucide-react";
 import Image from "next/image";
-
+import { GiTakeMyMoney } from "react-icons/gi";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { LiaShippingFastSolid } from "react-icons/lia";
+import { MdOutlineFoodBank } from "react-icons/md";
+import { SiIfood } from "react-icons/si";
 const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
   const order = await getOrder(id);
 
@@ -43,32 +48,19 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                 <tr className="pt-10">
                   <td className="pt-10">
                     <div className="flex justify-center items-center gap-3 flex-col">
-                      <Image
-                        src={"/paymen.svg"}
-                        alt="product"
-                        width={40}
-                        height={40}
-                      />
+                      <GiTakeMyMoney size={30} />
                       <span>Payment</span>
                       {order?.status === 1 && (
                         <span>
-                          <Image
-                            src={"/done.svg"}
-                            alt="product"
-                            width={40}
-                            height={40}
-                          />
+                          <Check />
                         </span>
                       )}
                     </div>
                   </td>
                   <td className="pt-10">
                     <div className="flex justify-center items-center gap-3 flex-col">
-                      <Image
-                        src={"/prepar.svg"}
-                        alt="product"
-                        width={40}
-                        height={40}
+                      <MdOutlineFoodBank
+                        size={30}
                         className={`${
                           order!.status + 1 === 2 && "animate-pulse"
                         }`}
@@ -76,23 +68,15 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                       <span>Preparing</span>
                       {order?.status === 2 && (
                         <span>
-                          <Image
-                            src={"/done.svg"}
-                            alt="product"
-                            width={40}
-                            height={40}
-                          />
+                          <Check />
                         </span>
                       )}
                     </div>
                   </td>
                   <td className="pt-10">
                     <div className="flex justify-center items-center gap-3 flex-col">
-                      <Image
-                        src={"/truck.svg"}
-                        alt="product"
-                        width={40}
-                        height={40}
+                      <LiaShippingFastSolid
+                        size={30}
                         className={`${
                           order!.status + 1 === 3 && "animate-pulse"
                         }`}
@@ -100,23 +84,15 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                       <span>On the way</span>
                       {order?.status === 3 && (
                         <span>
-                          <Image
-                            src={"/done.svg"}
-                            alt="product"
-                            width={40}
-                            height={40}
-                          />
+                          <Check />
                         </span>
                       )}
                     </div>
                   </td>
                   <td className="pt-10">
                     <div className="flex justify-center items-center gap-3 flex-col">
-                      <Image
-                        src={"/raedy.svg"}
-                        alt="product"
-                        width={40}
-                        height={40}
+                      <IoFastFoodOutline
+                        size={30}
                         className={`${
                           order!.status + 1 === 4 && "animate-pulse"
                         }`}
@@ -124,23 +100,15 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                       <span>Delivered</span>
                       {order?.status === 4 && (
                         <span>
-                          <Image
-                            src={"/done.svg"}
-                            alt="product"
-                            width={40}
-                            height={40}
-                          />
+                          <Check />
                         </span>
                       )}
                     </div>
                   </td>
                   <td className="pt-10">
                     <div className="flex justify-center items-center gap-3 flex-col">
-                      <Image
-                        src={"/enjoy.svg"}
-                        alt="product"
-                        width={40}
-                        height={40}
+                      <SiIfood
+                        size={30}
                         className={`${
                           order!.status + 1 === 5 && "animate-pulse"
                         }`}
@@ -148,12 +116,7 @@ const ClientOrder = async ({ params: { id } }: { params: { id: string } }) => {
                       <span>Enjoy</span>
                       {order?.status === 5 && (
                         <span>
-                          <Image
-                            src={"/done.svg"}
-                            alt="product"
-                            width={40}
-                            height={40}
-                          />
+                          <Check />
                         </span>
                       )}
                     </div>
