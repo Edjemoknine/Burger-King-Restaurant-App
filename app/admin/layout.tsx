@@ -30,11 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         setShowLoader(false);
       }
     }
-<<<<<<< HEAD
   }, [isLoaded, organizationList, router]);
-=======
-  }, [router, isLoaded, organizationList]);
->>>>>>> main
 
   return (
     <div>

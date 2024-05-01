@@ -14,7 +14,16 @@ const cartSlice = createSlice({
   reducers: {
     addProduct: (state, { payload }: { payload?: never }): any => {
       state.Quantity += 1;
-      payload && state.products.push(payload!);
+
+      const product = state?.products.find(
+        (pro: any) => pro?.id === payload?.id
+      );
+      if (product && product?.extraOptions.length === 0) {
+        product.quantity += 1;
+      } else {
+        state.products.push(payload!);
+      }
+      // payload && state.products.push(payload!);
 
       state.total = state.products.reduce(
         (sum, product: any) =>
@@ -38,6 +47,20 @@ const cartSlice = createSlice({
       state.products = state.products.filter(
         (product: any) => product.slug !== payload
       );
+
+      // ---------- update total after delete product-------------
+      state.total = state.products.reduce(
+        (sum, product: any) =>
+          sum +
+          product.quantity *
+            (product.price[Number(product.size)] +
+              product.extraOptions?.reduce(
+                (sum: any, opt: any) => sum + Number(opt.price),
+                0
+              )),
+        0
+      );
+      // ----------------------------------------------------------
     },
     checkAdmin: (state, { payload }) => {
       state.isAdmin = payload;
