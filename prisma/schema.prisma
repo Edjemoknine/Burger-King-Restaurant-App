@@ -11,12 +11,12 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(uuid()) @map("_id")
-  title       String
-  description String
-  price       Int[]
-  // extraOptions Json
-  images      String[]
+  id           String   @id @default(uuid()) @map("_id")
+  title        String
+  description  String
+  price        Int[]
+  extraOptions Json
+  images       String[]
 }
 
 model Order {
