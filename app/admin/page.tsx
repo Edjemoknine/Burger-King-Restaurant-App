@@ -100,7 +100,7 @@ const Admin = () => {
                         No options
                       </span>
                     )}
-                    {product?.extraOptions?.map((op: any, i) => (
+                    {(product?.extraOptions as any)?.map((op: any, i: any) => (
                       <span className="text-xs" key={i}>
                         {op?.text} | ${op?.price} <br />
                       </span>
