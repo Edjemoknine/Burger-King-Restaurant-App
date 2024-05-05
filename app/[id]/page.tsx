@@ -109,21 +109,23 @@ const PageDetails = ({ params: { id } }: { params: any }) => {
                 </select>
               </div>
               <div className="grid grid-cols-3 gap-3 my-4 ">
-                {data?.extraOptions?.map((option: any, index: number) => (
-                  <div key={option.text} className="flex gap-3 items-center">
-                    <label className="cursor-pointer" htmlFor={option.text}>
-                      {option.text}
-                    </label>
-                    <input
-                      onClick={(e: any) => handleChoose(e, option)}
-                      className="w-4 h-4 bg-black"
-                      type="checkbox"
-                      name={option.text}
-                      id={option.text}
-                      value={index}
-                    />
-                  </div>
-                ))}
+                {(data?.extraOptions as any)?.map(
+                  (option: any, index: number): any => (
+                    <div key={option.text} className="flex gap-3 items-center">
+                      <label className="cursor-pointer" htmlFor={option.text}>
+                        {option.text}
+                      </label>
+                      <input
+                        onClick={(e: any) => handleChoose(e, option)}
+                        className="w-4 h-4 bg-black"
+                        type="checkbox"
+                        name={option.text}
+                        id={option.text}
+                        value={index}
+                      />
+                    </div>
+                  )
+                )}
               </div>
 
               <div className="flex justify-end">

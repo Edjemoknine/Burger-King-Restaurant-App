@@ -15,7 +15,7 @@ const cartSlice = createSlice({
     addProduct: (state, { payload }: { payload?: never }): any => {
       state.Quantity += 1;
 
-      const product = state?.products.find(
+      const product: any = state?.products.find(
         (pro: any) => pro?.id === payload?.id
       );
       if (product && product?.extraOptions.length === 0) {
