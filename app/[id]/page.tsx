@@ -18,11 +18,11 @@ const fetcher = (url: string | URL | Request) =>
 
 const PageDetails = ({ params: { id } }: { params: any }) => {
   const { data, error, isLoading } = useSWR<ProType>(
-    `http://localhost:3001/api/products/${id}`,
+    `http://localhost:3000/api/products/${id}`,
     fetcher
   );
   const { data: related } = useSWR<ProType[]>(
-    `http://localhost:3001/api/products`,
+    `http://localhost:3000/api/products`,
     fetcher
   );
 
