@@ -73,7 +73,7 @@ const Admin = () => {
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                {/* <th>Extras</th> */}
+                <th>Extras</th>
                 <th>Price</th>
                 <th>Actions</th>
               </tr>
@@ -92,21 +92,21 @@ const Admin = () => {
                     </div>
                   </td>
                   <td>{product.id.slice(0, 5)}</td>
-                  <td>{product.title}</td>
-                  <td>{product.description.slice(0, 10)}...</td>
+                  <td>{product?.title}</td>
+                  <td>{product?.description.slice(0, 10)}...</td>
                   <td className="">
-                    {product.extraOptions.length === 0 && (
+                    {product?.extraOptions?.length === 0 && (
                       <span className="text-xs border border-amber-700 text-amber-700 text-center px-4 py-1 rounded-lg">
                         No options
                       </span>
                     )}
-                    {product.extraOptions.map((op: any, i) => (
+                    {product?.extraOptions?.map((op: any, i) => (
                       <span className="text-xs" key={i}>
                         {op?.text} | ${op?.price} <br />
                       </span>
                     ))}
                   </td>
-                  <td>${product.price[0]}</td>
+                  <td>${product?.price[0]}</td>
 
                   <td>
                     <div className="flex space-x-3 justify-center">
