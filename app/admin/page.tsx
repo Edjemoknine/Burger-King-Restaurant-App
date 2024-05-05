@@ -95,7 +95,7 @@ const Admin = () => {
                   <td>{product?.title}</td>
                   <td>{product?.description.slice(0, 10)}...</td>
                   <td className="">
-                    {product?.extraOptions?.length === 0 && (
+                    {(product?.extraOptions as any)?.length === 0 && (
                       <span className="text-xs border border-amber-700 text-amber-700 text-center px-4 py-1 rounded-lg">
                         No options
                       </span>
