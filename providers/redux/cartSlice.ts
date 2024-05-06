@@ -12,7 +12,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, { payload }: { payload?: never }): any => {
+    addProduct: (state, { payload }: { payload: any }): any => {
       state.Quantity += 1;
 
       const product: any = state?.products.find(
@@ -21,7 +21,7 @@ const cartSlice = createSlice({
       if (product && product?.extraOptions.length === 0) {
         product.quantity += 1;
       } else {
-        state.products.push(payload!);
+        (state.products as any).push(payload);
       }
       // payload && state.products.push(payload!);
 
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
           sum +
           product.quantity *
             (product.price[Number(product.size)] +
-              product.extraOptions?.reduce(
+              (product.extraOptions as any)?.reduce(
                 (sum: any, opt: any) => sum + Number(opt.price),
                 0
               )),
@@ -54,7 +54,7 @@ const cartSlice = createSlice({
           sum +
           product.quantity *
             (product.price[Number(product.size)] +
-              product.extraOptions?.reduce(
+              (product.extraOptions as any)?.reduce(
                 (sum: any, opt: any) => sum + Number(opt.price),
                 0
               )),
