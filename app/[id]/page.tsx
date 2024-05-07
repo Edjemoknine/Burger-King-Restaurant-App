@@ -18,7 +18,7 @@ const fetcher = (url: string | URL | Request) =>
 
 const PageDetails = ({ params: { id } }: { params: any }) => {
   const { data, error, isLoading } = useSWR<ProType>(
-    `https://burger-king-restaurant-app.vercel.app/${id}`,
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/${id}`,
     fetcher
   );
   const { data: related } = useSWR<ProType[]>(
